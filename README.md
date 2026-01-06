@@ -1,5 +1,5 @@
-# COURSENAME
-This is the repository for the LinkedIn Learning course `course-name`. The full course is available from [LinkedIn Learning][lil-course-url].
+# Build with AI: Safe and Scalable SQL AI Agents
+This is the repository for the LinkedIn Learning course `Build with AI: Safe and Scalable SQL AI Agents`. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![lil-thumbnail-url]
 
