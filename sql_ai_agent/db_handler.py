@@ -3,10 +3,11 @@ import duckdb
 import ibis
 from dataclasses import dataclass
 
+
 @dataclass
 class TableSchema:
-    schema: str      # "col1 type1, col2 type2"
-    db_type: str        # "postgres" or "duckdb"
+    schema: str  # "col1 type1, col2 type2"
+    db_type: str  # "postgres" or "duckdb"
     table: pd.DataFrame  # Schema as DataFrame
 
 
@@ -36,7 +37,7 @@ def get_duckdb_schema(con, tbl_name: str) -> pd.DataFrame:
     """Retrieve DuckDB table schema using Ibis introspection."""
 
     query = f"DESCRIBE SELECT * FROM {tbl_name};"
-    df =con.con.execute(query).df()
+    df = con.con.execute(query).df()
     df = df[["column_name", "column_type"]]
     return df
 
@@ -64,23 +65,17 @@ def get_tbl_attr(con, tbl_name: str) -> TableSchema:
 
     formatted = _format_schema(df)
 
-    return TableSchema(
-        schema=formatted,
-        db_type=db_type,
-        table=df
-    )
+    return TableSchema(schema=formatted, db_type=db_type, table=df)
 
 
 def query_execute(con, query: str) -> pd.DataFrame:
     # Detect Ibis Postgres backend
     if getattr(con, "name", None) == "postgres":
         df = con.sql(query).execute()
-        
 
     # Detect DuckDB backend (Ibis backend name is 'duckdb')
     elif getattr(con, "name", None) == "duckdb":
         df = con.con.sql(query).df()
-        
 
     else:
         raise TypeError(
@@ -88,3 +83,57 @@ def query_execute(con, query: str) -> pd.DataFrame:
             "Expected Ibis Postgres backend or Ibis DuckDB backend."
         )
     return df
+
+def _quote_ident(name: str) -> str:
+    """
+    Safely quote SQL identifiers (column / table names).
+
+    Uses ANSI double quotes, compatible with Postgres and DuckDB.
+    """
+    escaped = name.replace('"', '""')
+    return f'"{escaped}"'
+
+
+
+def _is_character_type(dtype: str, db_type: str) -> bool:
+    dtype = dtype.lower()
+
+    if db_type == "postgres":
+        return dtype in {"character varying", "varchar", "character", "char", "text"}
+
+    elif db_type == "duckdb":
+        return dtype in {"varchar", "text", "string"}
+
+    return False
+
+
+def get_character_distinct_values(
+    con, tbl_schema: TableSchema, tbl_name: str, max_values: int = 50
+) -> dict[str, list]:
+    char_cols = [
+        row.column_name
+        for row in tbl_schema.table.itertuples()
+        if _is_character_type(row.column_type, tbl_schema.db_type)
+    ]
+
+    quoted_table = _quote_ident(tbl_name)
+
+    results: dict[str, list] = {}
+
+    for col in char_cols:
+        qcol = _quote_ident(col)
+
+        query = f"""
+            SELECT DISTINCT {qcol}
+            FROM {quoted_table}
+            WHERE {qcol} IS NOT NULL
+            ORDER BY {qcol}
+            LIMIT {max_values}
+        """
+
+        df = query_execute(con, query)
+
+        # Pandas column name is unquoted
+        results[col] = df[col].tolist()
+
+    return results
