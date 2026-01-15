@@ -1,0 +1,35 @@
+networks:
+  dem:
+    driver: bridge
+services:
+  python:
+    image: docker.io/rkrispin/python-dev-sql-ai-agent:0.0.4
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=my_db
+    networks:
+      - dem
+  postgres:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    volumes:
+      - .:/workspace:cached
+      - ./postgresql/initdb.d:/docker-entrypoint-initdb.d
+      - $POSTGRES_DATABASES_PATH/sql-ai-agent:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=my_db
+    networks:
+      - dem
+models:
+  llm:
+    model: ai/gpt-oss:20B-UD-Q8_K_XL
