@@ -1,6 +1,11 @@
 {
   "name": "Build with AI Safe and Scalable SQL AI Agents",
-  "image": "docker.io/rkrispin/python-dev-sql-ai-agent:0.0.4",
+  "dockerComposeFile": [
+    "../docker-compose.yaml"
+  ],
+  "service": "python",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace/",
   "customizations": {
     "vscode": {
       "settings": {
@@ -26,11 +31,13 @@
         "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml",
         "aaron-bond.better-comments",
+        "posit.shiny",
         //Code
         "oderwat.indent-rainbow",
         // Data
         "mechatroner.rainbow-csv",
         "ms-toolsai.datawrangler",
+        "ms-ossdata.vscode-pgsql",
         // Git
         "mhutchie.git-graph",
         // Misc
