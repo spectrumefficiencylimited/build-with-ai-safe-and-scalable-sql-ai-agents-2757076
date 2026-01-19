@@ -1,0 +1,93 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.19.4"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "73840909aca20d224a74f90371b78e95",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"sql-validation\">SQL Validation</h1>\n<span class=\"paragraph\">In this notebook, we will focus on methods for validate SQL queries before executing them.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "22eb51a8f71de89736d331c0a609bdc5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "f16f3631950437b794f6f92750dd3188",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "c233b19659eeda70b67d50232c7b1b80",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='bkHC-0' random-id='d5ad3aa1-1779-f61b-3496-70a8d9d24dd7'><marimo-dropdown data-initial-value='[&quot;DuckDB&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Select Database:&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;DuckDB&quot;,&quot;PostgreSQL&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YfNZ",
+      "code_hash": "1d1a6c3531a78e221dee7b8bd2554098",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='YfNZ-0' random-id='0f45fc08-88ce-2330-5aff-6e2e653f02f6'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;Domestic&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;US&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Low Fare&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 1&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;B&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:31432},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;Domestic&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;US&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Enplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Low Fare&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 1&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;B&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:31353},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;ATA Airlines&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;TZ&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;Domestic&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;US&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Thru / Transit&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Low Fare&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 1&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;B&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:2518},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Aeroflot Russian International Airlines&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:null,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Aeroflot Russian International Airlines&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:null,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Europe&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 2&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;D&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:1324},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Aeroflot Russian International Airlines&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:null,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Aeroflot Russian International Airlines&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:null,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Europe&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Enplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 2&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;D&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:1198},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Air Canada&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;AC&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Air Canada&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;AC&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Canada&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 1&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;B&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:24124},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Air Canada&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;AC&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Air Canada&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;AC&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Canada&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Enplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 1&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;B&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:23613},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Air China&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;CA&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Air China&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;CA&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Asia&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 2&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;D&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:4983},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Air China&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;CA&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Air China&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;CA&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Asia&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Enplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 2&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;D&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:4604},{&#92;&quot;Year&#92;&quot;:1999,&#92;&quot;Date&#92;&quot;:&#92;&quot;1999-07-01 00:00:00&#92;&quot;,&#92;&quot;Operating Airline&#92;&quot;:&#92;&quot;Air Europe&#92;&quot;,&#92;&quot;Operating Airline IATA Code&#92;&quot;:&#92;&quot;PE&#92;&quot;,&#92;&quot;Published Airline&#92;&quot;:&#92;&quot;Air Europe&#92;&quot;,&#92;&quot;Published Airline IATA Code&#92;&quot;:&#92;&quot;PE&#92;&quot;,&#92;&quot;GEO Summary&#92;&quot;:&#92;&quot;International&#92;&quot;,&#92;&quot;GEO Region&#92;&quot;:&#92;&quot;Europe&#92;&quot;,&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;,&#92;&quot;Price Category Code&#92;&quot;:&#92;&quot;Other&#92;&quot;,&#92;&quot;Terminal&#92;&quot;:&#92;&quot;Terminal 2&#92;&quot;,&#92;&quot;Boarding Area&#92;&quot;:&#92;&quot;D&#92;&quot;,&#92;&quot;Passenger Count&#92;&quot;:205}]&quot;' data-total-rows='38546' data-total-columns='13' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Year&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;Date&quot;,[&quot;datetime&quot;,&quot;datetime64[ns]&quot;]],[&quot;Operating Airline&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Operating Airline IATA Code&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Published Airline&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Published Airline IATA Code&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;GEO Summary&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;GEO Region&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Activity Type Code&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Price Category Code&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Terminal&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Boarding Area&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Passenger Count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TVcq",
+      "code_hash": "d6e93d51179bceb7395b99bca74fa200",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "syntax error at or near \"DROP\"\nLINE 1: ...s_postgres_metadata_ckv6l43qxbey5gdify734rdumq AS DROP TABLE...\n                                                             ^",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/tmp/marimo_29895/__marimo__cell_TVcq_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">_df</span> <span class=\"o\">=</span> <span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">sql</span><span class=\"p\">(</span>\n<span class=\"w\">          </span><span class=\"pm\">^^^^^^^</span>\n  File <span class=\"nb\">&quot;/opt/python-3.11-dev/lib/python3.11/site-packages/marimo/_sql/sql.py&quot;</span>, line <span class=\"m\">83</span>, in <span class=\"n\">sql</span>\n<span class=\"w\">    </span><span class=\"n\">df</span> <span class=\"o\">=</span> <span class=\"n\">sql_engine</span><span class=\"o\">.</span><span class=\"n\">execute</span><span class=\"p\">(</span><span class=\"n\">query</span><span class=\"p\">)</span>\n<span class=\"w\">         </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/opt/python-3.11-dev/lib/python3.11/site-packages/marimo/_sql/engines/ibis.py&quot;</span>, line <span class=\"m\">59</span>, in <span class=\"n\">execute</span>\n<span class=\"w\">    </span><span class=\"n\">query_expr</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_connection</span><span class=\"o\">.</span><span class=\"n\">sql</span><span class=\"p\">(</span><span class=\"n\">query</span><span class=\"p\">)</span>\n<span class=\"w\">                 </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/opt/python-3.11-dev/lib/python3.11/site-packages/ibis/backends/sql/__init__.py&quot;</span>, line <span class=\"m\">164</span>, in <span class=\"n\">sql</span>\n<span class=\"w\">    </span><span class=\"n\">schema</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_get_schema_using_query</span><span class=\"p\">(</span><span class=\"n\">query</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/opt/python-3.11-dev/lib/python3.11/site-packages/ibis/backends/postgres/__init__.py&quot;</span>, line <span class=\"m\">519</span>, in <span class=\"n\">_get_schema_using_query</span>\n<span class=\"w\">    </span><span class=\"n\">cursor</span><span class=\"o\">.</span><span class=\"n\">execute</span><span class=\"p\">(</span><span class=\"n\">create_stmt</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/opt/python-3.11-dev/lib/python3.11/site-packages/psycopg/cursor.py&quot;</span>, line <span class=\"m\">97</span>, in <span class=\"n\">execute</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">ex</span><span class=\"o\">.</span><span class=\"n\">with_traceback</span><span class=\"p\">(</span><span class=\"kc\">None</span><span class=\"p\">)</span>\n<span class=\"gr\">psycopg.errors.SyntaxError</span>: <span class=\"n\">syntax error at or near &quot;DROP&quot;</span>\n<span class=\"x\">LINE 1: ...s_postgres_metadata_ckv6l43qxbey5gdify734rdumq AS DROP TABLE...</span>\n<span class=\"x\">                                                             ^</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    }
+  ]
+}

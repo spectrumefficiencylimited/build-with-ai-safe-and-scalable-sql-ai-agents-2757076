@@ -1,0 +1,405 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.19.4"
+  },
+  "cells": [
+    {
+      "id": "vblA",
+      "code_hash": "df012c9cfc98de9843301cfaeb105605",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"configuration\">Configuration</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "ca8a2e51beca100b82cfad0dee370c9d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"custom-query\">Custom Query</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "eeb9f469d867b0c5f3f6319e096f7227",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"database-connection\">Database Connection</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "959b35676da61608eabd51c9fa869b5b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"llm-configuration\">LLM Configuration</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "d6d05137b7d240c74df41c3f2180bf9f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"sql-agent-setup\">SQL Agent Setup</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "65a232c4b4e7e86080a8af94da48c1b7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"test-queries\">Test Queries</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "556099001dfbe2fe4a8953e7031c96c3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"query-1-row-count\">Query 1: Row Count</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "aff302f1958e5f6093529421c07ac25d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"query-2-unique-values\">Query 2: Unique Values</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "e316f9f9c8ae936f25ca421eb41456ae",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"query-3-aggregation-with-filter\">Query 3: Aggregation with Filter</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "358eb775a9dcc048300c73645e766fc6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"configuration-summary\">Configuration Summary</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "c2cf215e4f48aa2dd813646e0879feec",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"sql-ai-agent-testing\">SQL AI Agent Testing</h1>\n<span class=\"paragraph\">Interactive notebook for testing SQL AI agents with different configurations.</span>\n<span class=\"paragraph\">Use the dropdowns below to select your database and LLM provider.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "22eb51a8f71de89736d331c0a609bdc5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "c233b19659eeda70b67d50232c7b1b80",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='bkHC-0' random-id='eaed5735-f075-2b14-62bb-619764db7696'><marimo-dropdown data-initial-value='[&quot;DuckDB&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Select Database:&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;DuckDB&quot;,&quot;PostgreSQL&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "464a69707fe25c94ae0431921083e102",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-0' random-id='bd3dda99-d0a3-da43-71ff-0d6d2319d45d'><marimo-dropdown data-initial-value='[&quot;OpenAI&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Select LLM Provider:&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;Anthropic&quot;,&quot;Docker Model Runner&quot;,&quot;Google&quot;,&quot;OpenAI&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "032bb10aa3f2706f16594f2ae6ba13f4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='PKri-0' random-id='a5febb2f-96d4-ff4a-1b92-44477a11bd8b'><marimo-dropdown data-initial-value='[&quot;gemini-3-flash-preview&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Select Model&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;gemini-3-flash-preview&quot;,&quot;gemini-2.5-pro&quot;,&quot;gemini-2.5-flash&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "gemini-3-flash-preview\n<class 'list'>\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "878ebec3a1ca338ddb1db33a153e6cb0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='SFPL-0' random-id='7087b228-45f8-a302-dc72-a3afa38e0646'><marimo-text-area data-initial-value='&quot;&quot;' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Ask a custom question:&lt;/span&gt;&lt;/span&gt;&quot;' data-placeholder='&quot;Enter your question here...&quot;' data-disabled='false' data-debounce='true' data-full-width='true'></marimo-text-area></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "913a36a57d232c580907c568dbd66850",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "76df5db1a590c43a680e665ca0de7893",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "76049bb973d658aa655814d4a57f5629",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Selected Database:</strong> DuckDB</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "7287f106e78b6dfb1131cbbff9c2f019",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Selected LLM Provider:</strong> Google</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "6400c80db6ff995865ad4e7f01337072",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "f7b81214fa4b701de57a57cac900dcea",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>LLM Provider:</strong> Google</span>\n<ul>\n<li><strong>Model:</strong> gemini-2.5-flash</li>\n<li><strong>Fallback Model:</strong> gemini-2.5-pro</li>\n<li><strong>Base URL:</strong> <a href=\"https://generativelanguage.googleapis.com/v1beta\" rel=\"noopener noreferrer\" target=\"_blank\">https://generativelanguage.googleapis.com/v1beta</a></li>\n<li><strong>Temperature:</strong> 0</li>\n<li><strong>Max Tokens:</strong> 10000</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "0a4e4fbfa667e695eb8075b12ba69d34",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">\u2713 SQL Agent initialized successfully</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "21a486ab7a5ba39f24dcdb7847358201",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Question:</strong> How many rows are in the dataset?</span>\n<span class=\"paragraph\"><strong>Generated SQL:</strong>\n<div class=\"language-sql codehilite\"><pre><span></span><code><span class=\"k\">SELECT</span><span class=\"w\"> </span><span class=\"k\">COUNT</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"k\">FROM</span><span class=\"w\"> </span><span class=\"n\">air_traffic</span><span class=\"w\"> </span><span class=\"k\">LIMIT</span><span class=\"w\"> </span><span class=\"mi\">10000</span>\n</code></pre></div></span>\n<span class=\"paragraph\"><strong>Result:</strong></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "c204d0d6def0cddbb5da9e5ba24f4987",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='ulZA-0' random-id='0cb2e9f0-cb5d-be9b-b17b-105bbcd5585d'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;count_star()&#92;&quot;:38546}]&quot;' data-total-rows='1' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;count_star()&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "df7dcc7b62f3fc874f939bffe4505434",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Question:</strong> What are the unique values of the Activity Type Code field?</span>\n<span class=\"paragraph\"><strong>Generated SQL:</strong>\n<div class=\"language-sql codehilite\"><pre><span></span><code><span class=\"k\">SELECT</span><span class=\"w\"> </span><span class=\"k\">DISTINCT</span><span class=\"w\"> </span><span class=\"ss\">&quot;Activity Type Code&quot;</span><span class=\"w\"> </span><span class=\"k\">FROM</span><span class=\"w\"> </span><span class=\"n\">air_traffic</span><span class=\"w\"> </span><span class=\"k\">LIMIT</span><span class=\"w\"> </span><span class=\"mi\">10000</span>\n</code></pre></div></span>\n<span class=\"paragraph\"><strong>Result:</strong></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "a9b7cd6033c50c2f4b5d1e320002c626",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='ZBYS-0' random-id='8c51e472-5709-601c-c8d6-1b9eaf534b3a'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Enplaned&#92;&quot;},{&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Thru / Transit&#92;&quot;},{&#92;&quot;Activity Type Code&#92;&quot;:&#92;&quot;Deplaned&#92;&quot;}]&quot;' data-total-rows='3' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Activity Type Code&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "747b467196f60646f793048f13de0782",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Question:</strong> How many passengers landed at the airport in 2019?</span>\n<span class=\"paragraph\"><strong>Context:</strong> The Activity Type Code field defines if a passenger departures (e.g., Enplaned) or landed (e.g., Deplaned)</span>\n<span class=\"paragraph\"><strong>Generated SQL:</strong>\n<div class=\"language-sql codehilite\"><pre><span></span><code><span class=\"k\">SELECT</span><span class=\"w\"> </span><span class=\"k\">SUM</span><span class=\"p\">(</span><span class=\"ss\">&quot;Passenger Count&quot;</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"k\">FROM</span><span class=\"w\"> </span><span class=\"n\">air_traffic</span><span class=\"w\"> </span><span class=\"k\">WHERE</span><span class=\"w\"> </span><span class=\"ss\">&quot;Activity Type Code&quot;</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s1\">&#39;Deplaned&#39;</span><span class=\"w\"> </span><span class=\"k\">AND</span><span class=\"w\"> </span><span class=\"ss\">&quot;Year&quot;</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">2019</span><span class=\"w\"> </span><span class=\"k\">LIMIT</span><span class=\"w\"> </span><span class=\"mi\">10000</span>\n</code></pre></div></span>\n<span class=\"paragraph\"><strong>Result:</strong></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "c7e80c163b91faf86abc7f5672d96f56",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='xXTn-0' random-id='62adcc59-96a5-6e65-b33f-3f232af2f0e5'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;sum(&#92;&#92;&#92;&quot;Passenger Count&#92;&#92;&#92;&quot;)&#92;&quot;:28684054.0}]&quot;' data-total-rows='1' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;sum(&#92;&quot;Passenger Count&#92;&quot;)&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "60079da45e08254fa72dda0e6ddfb4af",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"current-configuration\">Current Configuration</h3>\n<table>\n<thead>\n<tr>\n<th>Setting</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Database</td>\n<td>DuckDB</td>\n</tr>\n<tr>\n<td>LLM Provider</td>\n<td>Google</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\"><strong>Note:</strong> Change the dropdown selections above to test different configurations.\nAll cells will automatically update due to marimo's reactive execution!</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
