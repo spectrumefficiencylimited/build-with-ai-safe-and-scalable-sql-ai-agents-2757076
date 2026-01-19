@@ -27,7 +27,7 @@ def set_prompt_template():
     system_template = """
 Given the following SQL table, your job is to write queries given a user’s request.
 Return just the SQL query as plain text, without additional text, and don't use markdown format.
-I am quering the data against a {database} database, please make sure you are using the {database} SQL dialects. 
+I am querying the data against a {database} database, please make sure you are using the {database} SQL dialects. 
 Please ensure that the field names in the query are enclosed in double quotes.
 {additional_context}
 CREATE TABLE {tbl_name} ({schema})

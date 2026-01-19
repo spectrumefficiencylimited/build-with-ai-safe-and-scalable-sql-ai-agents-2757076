@@ -6,6 +6,11 @@ from sql_ai_agent.db_handler import (
     query_execute,
     get_character_distinct_values,
 )
+from sql_ai_agent.sql_validator import (
+    SQLValidator,
+    ValidationConfig,
+    QueryValidationError,
+)
 from dataclasses import dataclass
 import pandas as pd
 from langchain_openai import ChatOpenAI
@@ -20,9 +25,11 @@ from langchain_core.prompts import (
 @dataclass
 class QueryOutput:
     success: bool
+    validation: bool
     query: str
     data: pd.DataFrame
     error: str
+
 
 
 @dataclass
@@ -32,11 +39,61 @@ class DebugAttempt:
     hypothesis: str | None = None
 
 
-def query_processing(llm_output, con):
+def query_processing(llm_output, con, validator=None, verbose=True):
+    """Process LLM output and execute SQL query with validation.
+
+    Args:
+        llm_output: Output from LLM containing SQL query
+        con: Database connection
+        validator: SQLValidator instance for query validation (optional)
+        verbose: Whether to print status messages
+
+    Returns:
+        QueryOutput with query results or error
+    """
+    # Extract query from markdown if needed
     if pq.is_markdown_code_chunk(text=llm_output.content):
         query = pq.extract_code_from_markdown(markdown_text=llm_output.content)
     else:
         query = llm_output.content
+
+    # Validate query if validator is provided
+    if validator is not None:
+        try:
+            # Validate query against safety rules
+            is_valid, error_msg = validator.validate(query)
+            if not is_valid:
+                if verbose:
+                    print(f"⚠️  Query blocked: {error_msg}")
+                return QueryOutput(
+                    success=False,
+                    validation=False,
+                    query=query,
+                    data=None,
+                    error=f"Validation Error: {error_msg}",
+                )
+
+            # Enforce LIMIT if enabled
+            if validator.config.enforce_limit:
+                original_query = query
+                query = validator.enforce_limit(query)
+                if query != original_query and verbose:
+                    print(
+                        f"ℹ️  Query modified to enforce LIMIT: {validator.config.max_limit}"
+                    )
+
+        except QueryValidationError as e:
+            if verbose:
+                print(f"⚠️  Validation error: {str(e)}")
+            return QueryOutput(
+                success=False,
+                validation=False,
+                query=query,
+                data=None,
+                error=f"Validation Error: {str(e)}",
+            )
+
+    # Execute query
     try:
         data = query_execute(con=con, query=query)
         success = True
@@ -47,6 +104,7 @@ def query_processing(llm_output, con):
 
     return QueryOutput(
         success=success,
+        validation=True,
         query=query,
         data=data,
         error=error_msg if not success else None,
@@ -96,7 +154,28 @@ class SqlAgent:
         temperature=0,
         max_token=5000,
         max_values=50,
+        # SQL Validation parameters
+        read_only=True,
+        max_result_limit=10000,
+        enforce_limit=True,
     ):
+        """Initialize SQL Agent with LLM and database configuration.
+
+        Args:
+            api_key: API key for LLM provider
+            base_url: Base URL for LLM API
+            model: Model name to use
+            fallback: Whether to use fallback model on failure
+            fallback_model: Fallback model name
+            con: Database connection (ibis connection)
+            tbl_name: Table name to query
+            temperature: LLM temperature (default: 0)
+            max_token: Maximum tokens for LLM response (default: 5000)
+            max_values: Max distinct values to fetch for categorical columns (default: 50)
+            read_only: Enable read-only mode (only SELECT queries) (default: True)
+            max_result_limit: Maximum rows to return from queries (default: 10000)
+            enforce_limit: Automatically add/enforce LIMIT clause (default: True)
+        """
         self.fallback = fallback
         self.fallback_model = fallback_model
         self.api_key = api_key
@@ -105,6 +184,15 @@ class SqlAgent:
         self.tbl_name = tbl_name
         self.max_token = max_token
         self.con = con
+
+        # Initialize SQL validator
+        self.validator = SQLValidator(
+            ValidationConfig(
+                read_only=read_only,
+                max_limit=max_result_limit,
+                enforce_limit=enforce_limit,
+            )
+        )
 
         self.llm = ChatOpenAI(
             base_url=base_url, api_key=api_key, temperature=temperature, model=model
@@ -157,12 +245,30 @@ class SqlAgent:
             schema=self.schema,
             additional_context=additional_context,
         )
-        query = query_processing(llm_output=llm_output, con=self.con)
-        if not query.success:
+        query = query_processing(
+            llm_output=llm_output,
+            con=self.con,
+            validator=self.validator,
+            verbose=verbose,
+        )
+
+        # If validation failed in read-only mode, return immediately
+        # Don't attempt debug or fallback for security violations
+        if not query.validation and self.validator.config.read_only:
+            if verbose:
+                print(
+                    "❌ Query blocked by validator in read-only mode. "
+                    "Skipping debug and fallback attempts."
+                )
+            return query
+
+        if not query.success and query.validation:
             print("Error in the query processing, trying to debug...")
             c = trials
+            t = 1
             while c > 0:
-                print("Trial: ", c)
+                print("Trial: ", t)
+                t = t + 1
                 print(query.error)
                 debug_memory.append(DebugAttempt(query=query.query, error=query.error))
 
@@ -177,12 +283,17 @@ class SqlAgent:
                     debug_memory=debug_memory,
                 )
 
-                query = query_processing(llm_output=llm_debug_output, con=self.con)
+                query = query_processing(
+                    llm_output=llm_debug_output,
+                    con=self.con,
+                    validator=self.validator,
+                    verbose=verbose,
+                )
                 if query.success:
                     c = 0
                 else:
                     c = c - 1
-        if not query.success and self.fallback:
+        if not query.success and self.fallback and query.validation:
             print("Falling back to the fallback model: ", self.fallback_model)
             llm_fallback_output = sql_agent(
                 chain=self.fallback_chain,
@@ -192,6 +303,11 @@ class SqlAgent:
                 schema=self.schema,
                 additional_context=additional_context,
             )
-            query = query_processing(llm_output=llm_fallback_output, con=self.con)
+            query = query_processing(
+                llm_output=llm_fallback_output,
+                con=self.con,
+                validator=self.validator,
+                verbose=verbose,
+            )
 
         return query
