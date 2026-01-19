@@ -31,6 +31,7 @@
         "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml",
         "aaron-bond.better-comments",
+        "marimo-team.vscode-marimo",
         "posit.shiny",
         //Code
         "oderwat.indent-rainbow",

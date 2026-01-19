@@ -19,7 +19,7 @@ services:
   postgres:
     image: postgres:15
     ports:
-      - 5432:5432
+      - 5431:5432
     volumes:
       - .:/workspace:cached
       - ./postgresql/initdb.d:/docker-entrypoint-initdb.d
@@ -30,6 +30,6 @@ services:
       - POSTGRES_DB=my_db
     networks:
       - dem
-models:
-  llm:
-    model: ai/gpt-oss:20B-UD-Q8_K_XL
+# models:
+#   llm:
+#     model: ai/gpt-oss:20B-UD-Q8_K_XL

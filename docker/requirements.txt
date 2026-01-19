@@ -5,6 +5,7 @@ plotly-express==0.4.1
 streamlit==1.53.0
 ipywidgets==8.1.7
 jupyter==1.1.1
+marimo==0.10.16
 duckdb==1.4.2
 psycopg==3.2.12
 ibis-framework[postgres]==11.0.0
@@ -15,3 +16,4 @@ langchain-community==0.4
 langchain-core==1.0.1
 langchain-openai==1.0.1
 sqlglot==28.5.0
+PyYAML==6.0.2
