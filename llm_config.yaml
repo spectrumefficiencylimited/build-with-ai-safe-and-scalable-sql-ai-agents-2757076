@@ -1,0 +1,138 @@
+# LLM Configuration File
+# Defines available LLM providers, models, and their settings
+
+# Global defaults (can be overridden per provider)
+defaults:
+  temperature: 0
+  max_tokens: 10000
+  default_provider: "docker_model_runner"  # Options: openai, anthropic, google, docker_model_runner
+  default_model: "ai/granite-4.0-h-micro"
+  fallback_model: "ai/devstral-small:24B"
+  enable_fallback: true
+
+# Database configuration
+database:
+  host: "postgres"
+  port: 5432
+  user: "postgres"
+  password: "password"
+  database: "my_db"
+  table_name: "air_traffic"
+
+# LLM Providers Configuration
+providers:
+
+  # OpenAI Configuration
+  openai:
+    enabled: true
+    base_url: "https://api.openai.com/v1"
+    api_key_env: "OPENAI_API_KEY"  # Environment variable name
+    temperature: 0
+    max_tokens: 10000
+    models:
+      - name: "gpt-4o"
+        description: "Latest GPT-4 Optimized model"
+        context_window: 128000
+        recommended: true
+      - name: "gpt-4o-mini"
+        description: "Smaller, faster GPT-4 variant"
+        context_window: 128000
+        recommended: false
+      - name: "gpt-4-turbo"
+        description: "GPT-4 Turbo with vision"
+        context_window: 128000
+        recommended: false
+      - name: "gpt-3.5-turbo"
+        description: "Fast and efficient ChatGPT model"
+        context_window: 16385
+        recommended: false
+    default_model: "gpt-4o"
+    fallback_model: "gpt-4o-mini"
+
+  # Anthropic Configuration
+  anthropic:
+    enabled: true
+    base_url: "https://api.anthropic.com/v1"
+    api_key_env: "CLAUDE_API_KEY"  # Environment variable name
+    temperature: 0
+    max_tokens: 10000
+    models:
+      - name: "claude-3-5-sonnet-20241022"
+        description: "Most intelligent Claude model"
+        context_window: 200000
+        recommended: true
+      - name: "claude-3-5-haiku-20241022"
+        description: "Fastest Claude model"
+        context_window: 200000
+        recommended: false
+      - name: "claude-3-opus-20240229"
+        description: "Previous generation flagship model"
+        context_window: 200000
+        recommended: false
+    default_model: "claude-3-5-sonnet-20241022"
+    fallback_model: "claude-3-5-haiku-20241022"
+
+  # Google Gemini Configuration
+  google:
+    enabled: true
+    base_url: "https://generativelanguage.googleapis.com/v1beta"
+    api_key_env: "GEMINI_API_KEY"  # Environment variable name
+    temperature: 0
+    max_tokens: 10000
+    models:
+      - name: "gemini-3-flash-preview"
+        description: "Model built for speed, combining frontier intelligence with superior search and grounding"
+        context_window: 1000000
+        recommended: true
+      - name: "gemini-2.5-pro"
+        description: "State-of-the-art multipurpose model"
+        context_window: 2000000
+        recommended: false
+      - name: "gemini-2.5-flash"
+        description: "Hybrid reasoning model"
+        context_window: 1000000
+        recommended: false
+    default_model: "gemini-2.5-flash"
+    fallback_model: "gemini-2.5-pro"
+
+  # Docker Model Runner (Local Models)
+  docker_model_runner:
+    enabled: true
+    base_url: "http://model-runner.docker.internal/engines/v1"
+    api_key: "docker"  # Fixed API key for local Docker models
+    temperature: 0
+    max_tokens: 10000
+    models:
+      - name: "ai/granite-4.0-h-micro"
+        description: "IBM Granite micro model"
+        recommended: true
+        local: true
+      - name: "ai/devstral-small:24B"
+        description: "Mistral Devstral 24B model"
+        recommended: true
+        local: true
+      - name: "ai/llama3.2:latest"
+        description: "Meta Llama 3.2 latest version"
+        recommended: false
+        local: true
+      - name: "ai/gemma3n"
+        description: "Google Gemma 3n model"
+        recommended: false
+        local: true
+      - name: "ai/gpt-oss:20B-UD-Q8_K_XL"
+        description: "Open-source GPT variant 20B parameters"
+        recommended: false
+        local: true
+    default_model: "ai/granite-4.0-h-micro"
+    fallback_model: "ai/devstral-small:24B"
+
+# Agent Configuration
+agent:
+  default_trials: 3
+  max_trials: 5
+  verbose: false
+  distinct_char_values: true
+  # SQL Validation settings
+  read_only: true
+  max_result_limit: 10000
+  enforce_limit: true
