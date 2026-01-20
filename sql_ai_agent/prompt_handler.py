@@ -35,7 +35,11 @@ CREATE TABLE {tbl_name} ({schema})
 
     user_template = "Write a SQL query that returns: {question}"
 
-    messages = [("system", system_template), ("user", user_template)]
+    messages = [
+        ("system", system_template),
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("user", user_template),
+    ]
 
     prompt_template = ChatPromptTemplate.from_messages(messages)
 

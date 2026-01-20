@@ -14,6 +14,7 @@ from sql_ai_agent.sql_validator import (
 from dataclasses import dataclass
 import pandas as pd
 from langchain_openai import ChatOpenAI
+from langchain_core.chat_history import InMemoryChatMessageHistory
 
 from langchain_core.prompts import (
     SystemMessagePromptTemplate,
@@ -29,7 +30,6 @@ class QueryOutput:
     query: str
     data: pd.DataFrame
     error: str
-
 
 
 @dataclass
@@ -111,7 +111,9 @@ def query_processing(llm_output, con, validator=None, verbose=True):
     )
 
 
-def sql_agent(chain, question, tbl_name, db_type, schema, additional_context):
+def sql_agent(
+    chain, chat_history, question, tbl_name, db_type, schema, additional_context
+):
     llm_output = chain.invoke(
         {
             "question": question,
@@ -119,8 +121,13 @@ def sql_agent(chain, question, tbl_name, db_type, schema, additional_context):
             "tbl_name": tbl_name,
             "database": db_type,
             "schema": schema,
+            "chat_history": chat_history.messages,
         }
     )
+    # Add to history
+    chat_history.add_user_message(question)
+    chat_history.add_ai_message(llm_output.content)
+
     return llm_output
 
 
@@ -209,6 +216,7 @@ class SqlAgent:
         self.db_type = schema.db_type
         self.prompt_template = ph.set_prompt_template()
         self.chain = self.prompt_template | self.llm
+        self.chat_history = InMemoryChatMessageHistory()
 
         if fallback:
             self.llm_fallback = ChatOpenAI(
@@ -221,6 +229,10 @@ class SqlAgent:
 
         self.debug_prompt_template = ph.debug_prompt_template()
         self.debug_chain = self.debug_prompt_template | self.llm
+
+    def clear_memory(self):
+        """Clear the conversation history"""
+        self.chat_history.clear()
 
     def ask_question(
         self,
@@ -244,6 +256,7 @@ class SqlAgent:
             db_type=self.db_type,
             schema=self.schema,
             additional_context=additional_context,
+            chat_history=self.chat_history,
         )
         query = query_processing(
             llm_output=llm_output,
