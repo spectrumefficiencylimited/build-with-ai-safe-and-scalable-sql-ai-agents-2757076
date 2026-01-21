@@ -13,8 +13,12 @@ It validates queries to:
 
 from dataclasses import dataclass, field
 from typing import Optional
+import logging
 import sqlglot
 from sqlglot import exp
+
+# Create module-level logger
+logger = logging.getLogger('sql_ai_agent.validator')
 
 
 class QueryValidationError(Exception):
@@ -85,7 +89,20 @@ class SQLValidator:
             >>> print(is_valid, error)
             False, "Operation not allowed: Drop. Only SELECT queries permitted in read-only mode."
         """
+        logger.debug(
+            "Starting query validation",
+            extra={
+                'operation_type': 'validation',
+                'query_length': len(query) if query else 0,
+                'read_only': self.config.read_only
+            }
+        )
+
         if not query or not query.strip():
+            logger.warning(
+                "Empty query rejected",
+                extra={'operation_type': 'validation'}
+            )
             return False, "Empty query not allowed"
 
         try:
@@ -94,6 +111,13 @@ class SQLValidator:
 
             # Check for multiple statements (SQL injection protection)
             if len(statements) > 1:
+                logger.warning(
+                    "Multiple statements detected",
+                    extra={
+                        'operation_type': 'validation',
+                        'statement_count': len(statements)
+                    }
+                )
                 return False, "Multiple SQL statements detected. Only single statements allowed."
 
             # Check for valid statement types
@@ -105,14 +129,35 @@ class SQLValidator:
                 allowed_set = set(self.config.allowed_statements)
                 if not statement_types.issubset(allowed_set):
                     blocked = statement_types - allowed_set
+                    logger.warning(
+                        "Disallowed operation in read-only mode",
+                        extra={
+                            'operation_type': 'validation',
+                            'blocked_operations': list(blocked),
+                            'query': query[:200]
+                        }
+                    )
                     return False, (
                         f"Operation not allowed: {', '.join(sorted(blocked))}. "
                         f"Only SELECT queries permitted in read-only mode."
                     )
 
+            logger.debug(
+                "Validation passed",
+                extra={'operation_type': 'validation'}
+            )
             return True, None
 
         except Exception as e:
+            logger.error(
+                "Validation error",
+                extra={
+                    'operation_type': 'validation',
+                    'error_type': type(e).__name__,
+                    'query': query[:200]
+                },
+                exc_info=True
+            )
             # If parsing fails, be conservative and block the query
             return False, f"Unable to parse query: {str(e)}"
 

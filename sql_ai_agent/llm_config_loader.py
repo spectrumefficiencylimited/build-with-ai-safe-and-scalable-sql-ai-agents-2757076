@@ -245,6 +245,48 @@ class LLMConfig:
         """Get enforce limit setting from agent config."""
         return self.get_agent_config().get('enforce_limit', True)
 
+    def get_memory_enabled(self) -> bool:
+        """Get memory enabled setting from agent config."""
+        return self.get_agent_config().get('memory', False)
+
+    def get_memory_size(self) -> int:
+        """Get memory size setting from agent config."""
+        return self.get_agent_config().get('memory_size', 10)
+
+    def get_memory_config(self) -> Dict[str, Any]:
+        """Get memory configuration from agent config.
+
+        Returns:
+            Dictionary with memory settings (memory, memory_size)
+        """
+        agent_config = self.get_agent_config()
+        return {
+            'memory': agent_config.get('memory', False),
+            'memory_size': agent_config.get('memory_size', 10),
+        }
+
+    def get_logging_config(self) -> Dict[str, Any]:
+        """
+        Get logging configuration.
+
+        Returns:
+            Dictionary with logging settings including enabled flag, level,
+            console/file output, LangChain callbacks, and performance tracking
+        """
+        return self.config.get('logging', {
+            'enabled': False,
+            'level': 'INFO',
+            'console': {'enabled': True, 'format': 'human'},
+            'file': {'enabled': False},
+            'langchain': {'enabled': True, 'track_tokens': True, 'track_timing': True},
+            'performance': {
+                'track_llm_calls': True,
+                'track_db_queries': True,
+                'track_validation': True,
+                'slow_query_threshold_ms': 1000
+            }
+        })
+
     def get_global_defaults(self) -> Dict[str, Any]:
         """Get global default settings."""
         return self.config.get('defaults', {})

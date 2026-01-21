@@ -22,7 +22,6 @@ from langchain_core.prompts import (
     ChatPromptTemplate,
 )
 
-
 @dataclass
 class QueryOutput:
     success: bool
@@ -30,6 +29,7 @@ class QueryOutput:
     query: str
     data: pd.DataFrame
     error: str
+    prompt: str = None  # The full prompt sent to the LLM
 
 
 @dataclass
@@ -39,7 +39,9 @@ class DebugAttempt:
     hypothesis: str | None = None
 
 
-def query_processing(llm_output, con, validator=None, verbose=True):
+def query_processing(
+    llm_output, con, validator=None, verbose=True, logger=None, prompt=None
+):
     """Process LLM output and execute SQL query with validation.
 
     Args:
@@ -47,6 +49,8 @@ def query_processing(llm_output, con, validator=None, verbose=True):
         con: Database connection
         validator: SQLValidator instance for query validation (optional)
         verbose: Whether to print status messages
+        logger: SQLAgentLogger instance for structured logging (optional)
+        prompt: The full prompt sent to the LLM (optional)
 
     Returns:
         QueryOutput with query results or error
@@ -63,7 +67,17 @@ def query_processing(llm_output, con, validator=None, verbose=True):
             # Validate query against safety rules
             is_valid, error_msg = validator.validate(query)
             if not is_valid:
-                if verbose:
+                if logger:
+                    logger.warning(
+                        "Query blocked by validator",
+                        extra={
+                            "operation_type": "validation",
+                            "validation_error": error_msg,
+                            "query": query,
+                            "read_only": validator.config.read_only,
+                        },
+                    )
+                elif verbose:
                     print(f"⚠️  Query blocked: {error_msg}")
                 return QueryOutput(
                     success=False,
@@ -71,19 +85,40 @@ def query_processing(llm_output, con, validator=None, verbose=True):
                     query=query,
                     data=None,
                     error=f"Validation Error: {error_msg}",
+                    prompt=prompt,
                 )
 
             # Enforce LIMIT if enabled
             if validator.config.enforce_limit:
                 original_query = query
                 query = validator.enforce_limit(query)
-                if query != original_query and verbose:
-                    print(
-                        f"ℹ️  Query modified to enforce LIMIT: {validator.config.max_limit}"
-                    )
+                if query != original_query:
+                    if logger:
+                        logger.info(
+                            "Query modified to enforce LIMIT",
+                            extra={
+                                "operation_type": "validation",
+                                "original_query": original_query,
+                                "modified_query": query,
+                                "limit": validator.config.max_limit,
+                            },
+                        )
+                    elif verbose:
+                        print(
+                            f"ℹ️  Query modified to enforce LIMIT: {validator.config.max_limit}"
+                        )
 
         except QueryValidationError as e:
-            if verbose:
+            if logger:
+                logger.warning(
+                    "Query validation error",
+                    extra={
+                        "operation_type": "validation",
+                        "error": str(e),
+                        "query": query,
+                    },
+                )
+            elif verbose:
                 print(f"⚠️  Validation error: {str(e)}")
             return QueryOutput(
                 success=False,
@@ -91,6 +126,7 @@ def query_processing(llm_output, con, validator=None, verbose=True):
                 query=query,
                 data=None,
                 error=f"Validation Error: {str(e)}",
+                prompt=prompt,
             )
 
     # Execute query
@@ -108,12 +144,35 @@ def query_processing(llm_output, con, validator=None, verbose=True):
         query=query,
         data=data,
         error=error_msg if not success else None,
+        prompt=prompt,
     )
 
 
 def sql_agent(
-    chain, chat_history, question, tbl_name, db_type, schema, additional_context
+    chain,
+    chat_history,
+    question,
+    tbl_name,
+    db_type,
+    schema,
+    additional_context,
+    use_memory=False,
 ):
+    """Execute SQL agent with optional chat history.
+
+    Args:
+        chain: LangChain chain for LLM invocation
+        chat_history: InMemoryChatMessageHistory instance
+        question: User question
+        tbl_name: Table name
+        db_type: Database type
+        schema: Table schema
+        additional_context: Additional context for the query
+        use_memory: Whether to use chat history (default: False)
+
+    Returns:
+        LLM output
+    """
     llm_output = chain.invoke(
         {
             "question": question,
@@ -121,12 +180,14 @@ def sql_agent(
             "tbl_name": tbl_name,
             "database": db_type,
             "schema": schema,
-            "chat_history": chat_history.messages,
+            "chat_history": chat_history.messages if use_memory else [],
         }
     )
-    # Add to history
-    chat_history.add_user_message(question)
-    chat_history.add_ai_message(llm_output.content)
+
+    # Add to history only if memory is enabled
+    if use_memory:
+        chat_history.add_user_message(question)
+        chat_history.add_ai_message(llm_output.content)
 
     return llm_output
 
@@ -165,6 +226,13 @@ class SqlAgent:
         read_only=True,
         max_result_limit=10000,
         enforce_limit=True,
+        # Memory parameters
+        memory=False,
+        memory_size=10,
+        # Logging parameters
+        enable_logging=False,
+        log_level="INFO",
+        log_file=None,
     ):
         """Initialize SQL Agent with LLM and database configuration.
 
@@ -182,6 +250,11 @@ class SqlAgent:
             read_only: Enable read-only mode (only SELECT queries) (default: True)
             max_result_limit: Maximum rows to return from queries (default: 10000)
             enforce_limit: Automatically add/enforce LIMIT clause (default: True)
+            memory: Enable conversation memory/chat history (default: False)
+            memory_size: Maximum number of message pairs to keep in memory (default: 10)
+            enable_logging: Enable structured logging (default: False)
+            log_level: Logging level - DEBUG, INFO, WARNING, ERROR (default: INFO)
+            log_file: Path to log file, None for console only (default: None)
         """
         self.fallback = fallback
         self.fallback_model = fallback_model
@@ -192,6 +265,31 @@ class SqlAgent:
         self.max_token = max_token
         self.con = con
 
+        # Memory configuration
+        self.memory_enabled = memory
+        self.memory_size = memory_size
+        self.chat_history = InMemoryChatMessageHistory()
+
+        # Initialize logging
+        if enable_logging:
+            from sql_ai_agent.logger import setup_logging
+            from sql_ai_agent.callbacks import LLMMetricsCallback
+
+            self.logger = setup_logging(
+                log_level=log_level,
+                log_file=log_file,
+                console_format="human",
+                file_format="json",
+            )
+
+            # Create LangChain callback for LLM tracking
+            self.llm_callback = LLMMetricsCallback(
+                logger=self.logger, session_id=self.logger.extra["session_id"]
+            )
+        else:
+            self.logger = None
+            self.llm_callback = None
+
         # Initialize SQL validator
         self.validator = SQLValidator(
             ValidationConfig(
@@ -201,8 +299,14 @@ class SqlAgent:
             )
         )
 
+        # Create LLM with optional callback
+        callbacks = [self.llm_callback] if self.llm_callback else []
         self.llm = ChatOpenAI(
-            base_url=base_url, api_key=api_key, temperature=temperature, model=model
+            base_url=base_url,
+            api_key=api_key,
+            temperature=temperature,
+            model=model,
+            callbacks=callbacks,
         )
 
         schema = get_tbl_attr(con=con, tbl_name=tbl_name)
@@ -216,7 +320,6 @@ class SqlAgent:
         self.db_type = schema.db_type
         self.prompt_template = ph.set_prompt_template()
         self.chain = self.prompt_template | self.llm
-        self.chat_history = InMemoryChatMessageHistory()
 
         if fallback:
             self.llm_fallback = ChatOpenAI(
@@ -224,15 +327,73 @@ class SqlAgent:
                 api_key=api_key,
                 temperature=temperature,
                 model=self.fallback_model,
+                callbacks=callbacks,
             )
             self.fallback_chain = self.prompt_template | self.llm_fallback
 
         self.debug_prompt_template = ph.debug_prompt_template()
         self.debug_chain = self.debug_prompt_template | self.llm
 
+        # Log successful initialization
+        if self.logger:
+            self.logger.info(
+                "SqlAgent initialized",
+                extra={
+                    "operation_type": "initialization",
+                    "model": model,
+                    "fallback_enabled": fallback,
+                    "fallback_model": fallback_model if fallback else None,
+                    "read_only": read_only,
+                    "memory_enabled": memory,
+                    "memory_size": memory_size,
+                    "table_name": tbl_name,
+                    "database_type": self.db_type,
+                },
+            )
+
+    def _trim_memory(self):
+        """Trim chat history to keep only the most recent message pairs.
+
+        Keeps the most recent memory_size message pairs (user + assistant).
+        A message pair consists of one user message and one assistant response.
+        """
+        if not self.memory_enabled:
+            return
+
+        messages = self.chat_history.messages
+        # Each pair is 2 messages (user + assistant)
+        max_messages = self.memory_size * 2
+
+        if len(messages) > max_messages:
+            # Keep only the most recent messages
+            messages_to_keep = messages[-max_messages:]
+            self.chat_history.clear()
+            for msg in messages_to_keep:
+                self.chat_history.add_message(msg)
+
     def clear_memory(self):
-        """Clear the conversation history"""
+        """Clear the conversation history."""
         self.chat_history.clear()
+
+    def get_memory_info(self):
+        """Get information about current memory state.
+
+        Returns:
+            dict: Memory statistics including enabled status, size limit,
+                  current message count, and message pairs count
+        """
+        message_count = len(self.chat_history.messages)
+        pairs_count = message_count // 2
+
+        return {
+            "memory_enabled": self.memory_enabled,
+            "memory_size_limit": self.memory_size,
+            "current_messages": message_count,
+            "current_pairs": pairs_count,
+            "memory_full": pairs_count >= self.memory_size
+            if self.memory_enabled
+            else False,
+        }
 
     def ask_question(
         self,
@@ -257,18 +418,49 @@ class SqlAgent:
             schema=self.schema,
             additional_context=additional_context,
             chat_history=self.chat_history,
+            use_memory=self.memory_enabled,
         )
+
+        # Trim memory after adding the interaction
+        self._trim_memory()
+
+        # Format the prompt for display
+        prompt_text = f"""Question: {question}
+
+Table: {self.tbl_name}
+Database Type: {self.db_type}
+Schema: {self.schema}"""
+
+        if additional_context:
+            prompt_text += f"\n\nAdditional Context:\n{additional_context}"
+
+        if self.memory_enabled and self.chat_history.messages:
+            prompt_text += (
+                f"\n\nChat History: {len(self.chat_history.messages)} messages"
+            )
+
         query = query_processing(
             llm_output=llm_output,
             con=self.con,
             validator=self.validator,
             verbose=verbose,
+            logger=self.logger,
+            prompt=prompt_text,
         )
 
         # If validation failed in read-only mode, return immediately
         # Don't attempt debug or fallback for security violations
         if not query.validation and self.validator.config.read_only:
-            if verbose:
+            if self.logger:
+                self.logger.error(
+                    "Query blocked in read-only mode",
+                    extra={
+                        "operation_type": "validation",
+                        "reason": "validation_failure",
+                        "query": query.query,
+                    },
+                )
+            elif verbose:
                 print(
                     "❌ Query blocked by validator in read-only mode. "
                     "Skipping debug and fallback attempts."
@@ -276,13 +468,34 @@ class SqlAgent:
             return query
 
         if not query.success and query.validation:
-            print("Error in the query processing, trying to debug...")
+            if self.logger:
+                self.logger.warning(
+                    "Query processing failed, starting debug",
+                    extra={
+                        "operation_type": "debug",
+                        "error": query.error,
+                        "trials": trials,
+                    },
+                )
+            elif verbose:
+                print("Error in the query processing, trying to debug...")
             c = trials
             t = 1
             while c > 0:
-                print("Trial: ", t)
+                if self.logger:
+                    self.logger.debug(
+                        f"Debug trial {t}/{trials}",
+                        extra={
+                            "operation_type": "debug",
+                            "trial_number": t,
+                            "total_trials": trials,
+                            "error": query.error,
+                        },
+                    )
+                elif verbose:
+                    print("Trial: ", t)
+                    print(query.error)
                 t = t + 1
-                print(query.error)
                 debug_memory.append(DebugAttempt(query=query.query, error=query.error))
 
                 llm_debug_output = debug_agent(
@@ -296,18 +509,41 @@ class SqlAgent:
                     debug_memory=debug_memory,
                 )
 
+                # Format debug prompt
+                debug_prompt_text = f"""Debug Attempt (Trial {t})
+
+Original Question: {question}
+Failed Query: {query.query}
+Error: {query.error}
+
+Table: {self.tbl_name}
+Database Type: {self.db_type}
+Schema: {self.schema}"""
+
                 query = query_processing(
                     llm_output=llm_debug_output,
                     con=self.con,
                     validator=self.validator,
                     verbose=verbose,
+                    logger=self.logger,
+                    prompt=debug_prompt_text,
                 )
                 if query.success:
                     c = 0
                 else:
                     c = c - 1
         if not query.success and self.fallback and query.validation:
-            print("Falling back to the fallback model: ", self.fallback_model)
+            if self.logger:
+                self.logger.warning(
+                    "Falling back to fallback model",
+                    extra={
+                        "operation_type": "fallback",
+                        "fallback_model": self.fallback_model,
+                        "reason": "query_failure",
+                    },
+                )
+            elif verbose:
+                print("Falling back to the fallback model: ", self.fallback_model)
             llm_fallback_output = sql_agent(
                 chain=self.fallback_chain,
                 question=question,
@@ -315,12 +551,29 @@ class SqlAgent:
                 db_type=self.db_type,
                 schema=self.schema,
                 additional_context=additional_context,
+                chat_history=self.chat_history,
+                use_memory=False,  # Don't add fallback to memory (it's a retry)
             )
+
+            # Format fallback prompt
+            fallback_prompt_text = f"""Fallback Model ({self.fallback_model})
+
+Question: {question}
+
+Table: {self.tbl_name}
+Database Type: {self.db_type}
+Schema: {self.schema}"""
+
+            if additional_context:
+                fallback_prompt_text += f"\n\nAdditional Context:\n{additional_context}"
+
             query = query_processing(
                 llm_output=llm_fallback_output,
                 con=self.con,
                 validator=self.validator,
                 verbose=verbose,
+                logger=self.logger,
+                prompt=fallback_prompt_text,
             )
 
         return query
