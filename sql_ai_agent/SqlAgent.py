@@ -21,6 +21,7 @@ from langchain_core.prompts import (
     HumanMessagePromptTemplate,
     ChatPromptTemplate,
 )
+import sqlglot
 
 @dataclass
 class QueryOutput:
@@ -30,6 +31,80 @@ class QueryOutput:
     data: pd.DataFrame
     error: str
     prompt: str = None  # The full prompt sent to the LLM
+
+    def __repr__(self):
+        """Clean string representation for console display."""
+        if self.success:
+            rows = len(self.data) if self.data is not None else 0
+            cols = len(self.data.columns) if self.data is not None else 0
+            return f"QueryOutput(success=True, rows={rows}, cols={cols})"
+        else:
+            error_preview = self.error[:100] + "..." if self.error and len(self.error) > 100 else self.error
+            return f"QueryOutput(success=False, error='{error_preview}')"
+
+    def display(self, show_query=True, show_data=True, max_rows=10):
+        """Display query results in a clean, readable format.
+
+        Args:
+            show_query: Whether to display the SQL query (default: True)
+            show_data: Whether to display the result data (default: True)
+            max_rows: Maximum rows to display from results (default: 10)
+        """
+        print("\n" + "=" * 80)
+
+        if not self.validation:
+            print("❌ QUERY BLOCKED BY VALIDATOR")
+            print("=" * 80)
+            print(f"\nReason: {self.error}")
+            if show_query:
+                # Format SQL query if possible
+                try:
+                    formatted_query = sqlglot.parse_one(self.query).sql(pretty=True, indent=2)
+                except Exception:
+                    formatted_query = self.query
+                print(f"\nBlocked Query:\n{formatted_query}")
+            print("=" * 80)
+            return
+
+        if not self.success:
+            print("❌ QUERY FAILED")
+            print("=" * 80)
+            if show_query:
+                # Format SQL query if possible
+                try:
+                    formatted_query = sqlglot.parse_one(self.query).sql(pretty=True, indent=2)
+                except Exception:
+                    formatted_query = self.query
+                print(f"\nQuery:\n{formatted_query}\n")
+            print(f"Error: {self.error}")
+            print("=" * 80)
+            return
+
+        print("✓ QUERY SUCCESSFUL")
+        print("=" * 80)
+
+        if show_query:
+            # Format SQL query using SqlGlot
+            try:
+                formatted_query = sqlglot.parse_one(self.query).sql(pretty=True, indent=2)
+            except Exception as e:
+                # Fallback to original query if formatting fails
+                formatted_query = self.query
+            print(f"\nSQL Query:\n{formatted_query}\n")
+
+        if show_data and self.data is not None:
+            rows = len(self.data)
+            print(f"Results ({rows} row{'s' if rows != 1 else ''}):")
+            print("-" * 80)
+
+            # Display data
+            if rows <= max_rows:
+                print(self.data.to_string(index=False))
+            else:
+                print(self.data.head(max_rows).to_string(index=False))
+                print(f"\n... ({rows - max_rows} more rows)")
+
+        print("=" * 80 + "\n")
 
 
 @dataclass
@@ -233,6 +308,7 @@ class SqlAgent:
         enable_logging=False,
         log_level="INFO",
         log_file=None,
+        log_to_console=True,
     ):
         """Initialize SQL Agent with LLM and database configuration.
 
@@ -255,6 +331,7 @@ class SqlAgent:
             enable_logging: Enable structured logging (default: False)
             log_level: Logging level - DEBUG, INFO, WARNING, ERROR (default: INFO)
             log_file: Path to log file, None for console only (default: None)
+            log_to_console: Whether to output logs to console (default: True)
         """
         self.fallback = fallback
         self.fallback_model = fallback_model
@@ -280,6 +357,7 @@ class SqlAgent:
                 log_file=log_file,
                 console_format="human",
                 file_format="json",
+                log_to_console=log_to_console,
             )
 
             # Create LangChain callback for LLM tracking
@@ -380,7 +458,7 @@ class SqlAgent:
 
         Returns:
             dict: Memory statistics including enabled status, size limit,
-                  current message count, and message pairs count
+                current message count, and message pairs count
         """
         message_count = len(self.chat_history.messages)
         pairs_count = message_count // 2
@@ -421,6 +499,18 @@ class SqlAgent:
             use_memory=self.memory_enabled,
         )
 
+        # Log the LLM output (detailed)
+        if self.logger:
+            self.logger.debug(
+                "LLM generated SQL query",
+                extra={
+                    "operation_type": "llm_response",
+                    "question": question,
+                    "llm_output": llm_output.content,
+                    "model": self.model,
+                },
+            )
+
         # Trim memory after adding the interaction
         self._trim_memory()
 
@@ -448,6 +538,21 @@ Schema: {self.schema}"""
             prompt=prompt_text,
         )
 
+        # Log the final result (detailed)
+        if self.logger:
+            self.logger.info(
+                "Query processing completed",
+                extra={
+                    "operation_type": "query_result",
+                    "question": question,
+                    "query": query.query,
+                    "success": query.success,
+                    "validation": query.validation,
+                    "rows_returned": len(query.data) if query.data is not None else 0,
+                    "error": query.error if not query.success else None,
+                },
+            )
+
         # If validation failed in read-only mode, return immediately
         # Don't attempt debug or fallback for security violations
         if not query.validation and self.validator.config.read_only:
@@ -465,6 +570,11 @@ Schema: {self.schema}"""
                     "❌ Query blocked by validator in read-only mode. "
                     "Skipping debug and fallback attempts."
                 )
+
+            # Display clean output if verbose
+            if verbose:
+                query.display()
+
             return query
 
         if not query.success and query.validation:
@@ -508,6 +618,17 @@ Schema: {self.schema}"""
                     error_msg=query.error,
                     debug_memory=debug_memory,
                 )
+
+                # Log debug LLM output
+                if self.logger:
+                    self.logger.debug(
+                        "Debug LLM response",
+                        extra={
+                            "operation_type": "debug",
+                            "trial_number": t - 1,
+                            "debug_output": llm_debug_output.content,
+                        },
+                    )
 
                 # Format debug prompt
                 debug_prompt_text = f"""Debug Attempt (Trial {t})
@@ -555,6 +676,17 @@ Schema: {self.schema}"""
                 use_memory=False,  # Don't add fallback to memory (it's a retry)
             )
 
+            # Log fallback LLM output
+            if self.logger:
+                self.logger.debug(
+                    "Fallback LLM response",
+                    extra={
+                        "operation_type": "fallback",
+                        "fallback_model": self.fallback_model,
+                        "fallback_output": llm_fallback_output.content,
+                    },
+                )
+
             # Format fallback prompt
             fallback_prompt_text = f"""Fallback Model ({self.fallback_model})
 
@@ -575,5 +707,9 @@ Schema: {self.schema}"""
                 logger=self.logger,
                 prompt=fallback_prompt_text,
             )
+
+        # Display clean output if verbose mode is enabled
+        if verbose:
+            query.display()
 
         return query

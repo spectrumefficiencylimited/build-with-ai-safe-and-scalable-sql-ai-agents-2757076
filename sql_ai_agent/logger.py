@@ -176,6 +176,7 @@ def setup_logging(
     log_file: Optional[str] = None,
     console_format: str = "human",
     file_format: str = "json",
+    log_to_console: bool = True,
 ) -> SQLAgentLogger:
     """
     Configure logging for SQL AI Agent.
@@ -188,6 +189,7 @@ def setup_logging(
         log_file: Path to log file (None for console only)
         console_format: Format for console output ("human" or "json")
         file_format: Format for file output ("human" or "json")
+        log_to_console: Whether to output logs to console (default: True)
 
     Returns:
         Configured SQLAgentLogger instance
@@ -197,7 +199,8 @@ def setup_logging(
             log_level="INFO",
             log_file="logs/agent.log",
             console_format="human",
-            file_format="json"
+            file_format="json",
+            log_to_console=False
         )
         logger.info("Agent initialized")
     """
@@ -205,21 +208,22 @@ def setup_logging(
     logger.setLevel(getattr(logging, log_level.upper()))
     logger.handlers.clear()  # Remove existing handlers
 
-    # Console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(getattr(logging, log_level.upper()))
+    # Console handler (optional)
+    if log_to_console:
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(getattr(logging, log_level.upper()))
 
-    if console_format == "json":
-        console_handler.setFormatter(StructuredFormatter())
-    else:
-        # Human-readable format
-        console_handler.setFormatter(
-            logging.Formatter(
-                '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                datefmt='%Y-%m-%d %H:%M:%S'
+        if console_format == "json":
+            console_handler.setFormatter(StructuredFormatter())
+        else:
+            # Human-readable format
+            console_handler.setFormatter(
+                logging.Formatter(
+                    '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S'
+                )
             )
-        )
-    logger.addHandler(console_handler)
+        logger.addHandler(console_handler)
 
     # File handler (if specified)
     if log_file:
