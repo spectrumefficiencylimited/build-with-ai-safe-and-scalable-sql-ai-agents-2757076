@@ -315,15 +315,6 @@
         <mxCell id="2uH5xaU1zVOF7cFNzTFR-63" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" value="Skills" vertex="1">
           <mxGeometry height="30" width="50" x="710" y="447" as="geometry" />
         </mxCell>
-        <mxCell id="2uH5xaU1zVOF7cFNzTFR-64" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="260" width="330" x="720" y="1110" as="geometry" />
-        </mxCell>
-        <mxCell id="2uH5xaU1zVOF7cFNzTFR-65" parent="1" style="rounded=1;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" value="System Prompt" vertex="1">
-          <mxGeometry height="67" width="67" x="776" y="1150" as="geometry" />
-        </mxCell>
-        <mxCell id="2uH5xaU1zVOF7cFNzTFR-66" parent="1" style="rounded=1;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" value="User Prompt" vertex="1">
-          <mxGeometry height="67" width="67" x="776" y="1270" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

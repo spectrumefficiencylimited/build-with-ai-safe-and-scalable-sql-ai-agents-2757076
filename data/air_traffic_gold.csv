@@ -38545,3 +38545,689 @@
 38543,2025,2025-07-01,WestJet,WS,WestJet,WS,International,Canada,Enplaned,Other,International,A,12475
 38544,2025,2025-07-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Deplaned,Other,International,A,8602
 38545,2025,2025-07-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Enplaned,Other,International,A,5679
+38546,2025,2025-08-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Deplaned,Other,Terminal 1,B,8387
+38547,2025,2025-08-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Enplaned,Other,Terminal 1,B,7942
+38548,2025,2025-08-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Deplaned,Other,International,A,14030
+38549,2025,2025-08-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Enplaned,Other,International,A,12298
+38550,2025,2025-08-01,Air Canada,AC,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,29690
+38551,2025,2025-08-01,Air Canada,AC,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,31634
+38552,2025,2025-08-01,Air China,CA,Air China,CA,International,Asia,Deplaned,Other,International,G,3385
+38553,2025,2025-08-01,Air China,CA,Air China,CA,International,Asia,Enplaned,Other,International,G,3218
+38554,2025,2025-08-01,Air France,AF,Air France,AF,International,Europe,Deplaned,Other,International,A,12503
+38555,2025,2025-08-01,Air France,AF,Air France,AF,International,Europe,Enplaned,Other,International,A,12859
+38556,2025,2025-08-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Deplaned,Other,International,A,15572
+38557,2025,2025-08-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Enplaned,Other,International,A,13335
+38558,2025,2025-08-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Deplaned,Other,International,G,5199
+38559,2025,2025-08-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Enplaned,Other,International,G,4342
+38560,2025,2025-08-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Deplaned,Other,International,A,3800
+38561,2025,2025-08-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Enplaned,Other,International,A,3743
+38562,2025,2025-08-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Deplaned,Other,International,A,5814
+38563,2025,2025-08-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Enplaned,Other,International,A,4136
+38564,2025,2025-08-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,146931
+38565,2025,2025-08-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,146389
+38566,2025,2025-08-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Deplaned,Other,International,A,8900
+38567,2025,2025-08-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Enplaned,Other,Terminal 1,B,7713
+38568,2025,2025-08-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Deplaned,Other,International,G,11580
+38569,2025,2025-08-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Enplaned,Other,International,G,10759
+38570,2025,2025-08-01,American Airlines,AA,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,167459
+38571,2025,2025-08-01,American Airlines,AA,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,172237
+38572,2025,2025-08-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Deplaned,Other,International,G,9317
+38573,2025,2025-08-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Enplaned,Other,International,G,7671
+38574,2025,2025-08-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Deplaned,Other,Terminal 2,D,6503
+38575,2025,2025-08-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Enplaned,Other,Terminal 2,D,6512
+38576,2025,2025-08-01,British Airways,BA,British Airways,BA,International,Europe,Deplaned,Other,International,A,20381
+38577,2025,2025-08-01,British Airways,BA,British Airways,BA,International,Europe,Enplaned,Other,International,A,20737
+38578,2025,2025-08-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Deplaned,Other,International,G,4731
+38579,2025,2025-08-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Enplaned,Other,International,G,4923
+38580,2025,2025-08-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Deplaned,Other,International,A,21815
+38581,2025,2025-08-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Enplaned,Other,International,A,26798
+38582,2025,2025-08-01,China Airlines,CI,China Airlines,CI,International,Asia,Deplaned,Other,International,A,8612
+38583,2025,2025-08-01,China Airlines,CI,China Airlines,CI,International,Asia,Enplaned,Other,International,A,6563
+38584,2025,2025-08-01,China Eastern,MU,China Eastern,MU,International,Asia,Deplaned,Other,International,A,3905
+38585,2025,2025-08-01,China Eastern,MU,China Eastern,MU,International,Asia,Enplaned,Other,International,A,3673
+38586,2025,2025-08-01,China Southern,CZ,China Southern,CZ,International,Asia,Deplaned,Other,International,A,5703
+38587,2025,2025-08-01,China Southern,CZ,China Southern,CZ,International,Asia,Enplaned,Other,International,A,5694
+38588,2025,2025-08-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Deplaned,Other,International,A,8448
+38589,2025,2025-08-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Enplaned,Other,International,A,7560
+38590,2025,2025-08-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,191761
+38591,2025,2025-08-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,193270
+38592,2025,2025-08-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Deplaned,Other,International,A,24869
+38593,2025,2025-08-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Enplaned,Other,International,A,15112
+38594,2025,2025-08-01,Emirates,EK,Emirates,EK,International,Middle East,Deplaned,Other,International,A,14134
+38595,2025,2025-08-01,Emirates,EK,Emirates,EK,International,Middle East,Enplaned,Other,International,A,10179
+38596,2025,2025-08-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Deplaned,Low Fare,Terminal 1,B,4969
+38597,2025,2025-08-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Enplaned,Low Fare,Terminal 1,B,5289
+38598,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Deplaned,Other,International,A,1231
+38599,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Enplaned,Other,International,A,1538
+38600,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Thru / Transit,Other,International,A,3820
+38601,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Europe,Deplaned,Other,International,A,5739
+38602,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Europe,Enplaned,Other,International,A,4918
+38603,2025,2025-08-01,French Bee,BF,French Bee,BF,International,Europe,Thru / Transit,Other,International,A,4143
+38604,2025,2025-08-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,International,A,43378
+38605,2025,2025-08-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,International,A,42912
+38606,2025,2025-08-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,Terminal 1,B,8133
+38607,2025,2025-08-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,Terminal 1,B,9435
+38608,2025,2025-08-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Deplaned,Other,International,A,18389
+38609,2025,2025-08-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Enplaned,Other,International,A,17276
+38610,2025,2025-08-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,16133
+38611,2025,2025-08-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,15890
+38612,2025,2025-08-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Deplaned,Other,International,A,7194
+38613,2025,2025-08-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Enplaned,Other,International,A,6369
+38614,2025,2025-08-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Thru / Transit,Other,International,A,179
+38615,2025,2025-08-01,Iberia,IB,Iberia,IB,International,Europe,Deplaned,Other,International,A,7675
+38616,2025,2025-08-01,Iberia,IB,Iberia,IB,International,Europe,Enplaned,Other,International,A,6919
+38617,2025,2025-08-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Deplaned,Other,International,A,10956
+38618,2025,2025-08-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Enplaned,Other,International,A,8815
+38619,2025,2025-08-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,4234
+38620,2025,2025-08-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,4175
+38621,2025,2025-08-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Deplaned,Low Fare,Terminal 1,B,51383
+38622,2025,2025-08-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Enplaned,Low Fare,Terminal 1,B,55713
+38623,2025,2025-08-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Deplaned,Other,International,A,8029
+38624,2025,2025-08-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Enplaned,Other,International,A,8502
+38625,2025,2025-08-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Deplaned,Other,International,A,8045
+38626,2025,2025-08-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Enplaned,Other,International,A,7053
+38627,2025,2025-08-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Deplaned,Other,International,G,18334
+38628,2025,2025-08-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Enplaned,Other,International,G,18054
+38629,2025,2025-08-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Deplaned,Other,International,A,9696
+38630,2025,2025-08-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Enplaned,Other,International,A,6043
+38631,2025,2025-08-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Deplaned,Other,International,A,2652
+38632,2025,2025-08-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Enplaned,Other,International,A,2637
+38633,2025,2025-08-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Deplaned,Other,International,A,2368
+38634,2025,2025-08-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Enplaned,Other,International,A,2230
+38635,2025,2025-08-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Deplaned,Other,International,A,9571
+38636,2025,2025-08-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Enplaned,Other,International,A,9225
+38637,2025,2025-08-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Deplaned,Other,International,G,7148
+38638,2025,2025-08-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Enplaned,Other,International,G,6733
+38639,2025,2025-08-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Deplaned,Other,International,G,11919
+38640,2025,2025-08-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Enplaned,Other,International,G,10943
+38641,2025,2025-08-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,47254
+38642,2025,2025-08-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,48109
+38643,2025,2025-08-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,10490
+38644,2025,2025-08-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,10440
+38645,2025,2025-08-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,6660
+38646,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,108030
+38647,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,107780
+38648,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,1804
+38649,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,1373
+38650,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Deplaned,Other,Terminal 3,F,2476
+38651,2025,2025-08-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,2735
+38652,2025,2025-08-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Deplaned,Low Fare,Terminal 2,D,107197
+38653,2025,2025-08-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Enplaned,Low Fare,Terminal 2,D,107522
+38654,2025,2025-08-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Thru / Transit,Low Fare,Terminal 2,D,33
+38655,2025,2025-08-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Deplaned,Other,International,A,7905
+38656,2025,2025-08-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Enplaned,Other,International,A,5642
+38657,2025,2025-08-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Deplaned,Low Fare,International,A,9546
+38658,2025,2025-08-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Enplaned,Low Fare,International,A,9961
+38659,2025,2025-08-01,Swiss International,LX,Swiss International,LX,International,Europe,Deplaned,Other,International,G,9091
+38660,2025,2025-08-01,Swiss International,LX,Swiss International,LX,International,Europe,Enplaned,Other,International,G,9447
+38661,2025,2025-08-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Deplaned,Other,International,A,10687
+38662,2025,2025-08-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Enplaned,Other,International,A,9815
+38663,2025,2025-08-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Deplaned,Other,International,A,5357
+38664,2025,2025-08-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Enplaned,Other,International,A,5055
+38665,2025,2025-08-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Deplaned,Other,International,A,16223
+38666,2025,2025-08-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Enplaned,Other,International,A,15905
+38667,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,A,3231
+38668,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,A,1419
+38669,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,G,22792
+38670,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,G,36244
+38671,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 2,D,6643
+38672,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 2,D,165151
+38673,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 2,D,22
+38674,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,E,281078
+38675,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,E,281503
+38676,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,E,3
+38677,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,331059
+38678,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,342628
+38679,2025,2025-08-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,F,2424
+38680,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,A,5382
+38681,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,A,870
+38682,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,G,117078
+38683,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,G,89259
+38684,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Thru / Transit,Other,International,G,217
+38685,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,Terminal 3,F,6497
+38686,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Deplaned,Other,International,G,25647
+38687,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,G,22392
+38688,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,International,G,1300
+38689,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,G,1201
+38690,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 2,D,14416
+38691,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 2,D,12419
+38692,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,E,18588
+38693,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,E,20376
+38694,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,8905
+38695,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,9546
+38696,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,A,618
+38697,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,A,1846
+38698,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,G,8211
+38699,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,G,4747
+38700,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,A,511
+38701,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,G,76090
+38702,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,International,G,75306
+38703,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,Terminal 3,F,2768
+38704,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,A,2595
+38705,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,A,112
+38706,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,G,32410
+38707,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,G,530
+38708,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 2,D,12503
+38709,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,E,11301
+38710,2025,2025-08-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,5612
+38711,2025,2025-08-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Deplaned,Other,International,A,4808
+38712,2025,2025-08-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Enplaned,Other,International,A,3229
+38713,2025,2025-08-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Deplaned,Other,International,A,12867
+38714,2025,2025-08-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Enplaned,Other,International,A,13661
+38715,2025,2025-08-01,WestJet,WS,WestJet,WS,International,Canada,Deplaned,Other,International,A,13710
+38716,2025,2025-08-01,WestJet,WS,WestJet,WS,International,Canada,Enplaned,Other,International,A,13646
+38717,2025,2025-08-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Deplaned,Other,International,A,8291
+38718,2025,2025-08-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Enplaned,Other,International,A,5373
+38719,2025,2025-09-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Deplaned,Other,Terminal 1,B,7893
+38720,2025,2025-09-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Enplaned,Other,Terminal 1,B,7372
+38721,2025,2025-09-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Deplaned,Other,International,A,7293
+38722,2025,2025-09-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Enplaned,Other,International,A,8267
+38723,2025,2025-09-01,Air Canada,AC,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,31247
+38724,2025,2025-09-01,Air Canada,AC,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,31052
+38725,2025,2025-09-01,Air China,CA,Air China,CA,International,Asia,Deplaned,Other,International,G,2293
+38726,2025,2025-09-01,Air China,CA,Air China,CA,International,Asia,Enplaned,Other,International,G,2300
+38727,2025,2025-09-01,Air France,AF,Air France,AF,International,Europe,Deplaned,Other,International,A,11964
+38728,2025,2025-09-01,Air France,AF,Air France,AF,International,Europe,Enplaned,Other,International,A,12415
+38729,2025,2025-09-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Deplaned,Other,International,A,8245
+38730,2025,2025-09-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Enplaned,Other,International,A,11548
+38731,2025,2025-09-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Deplaned,Other,International,G,4974
+38732,2025,2025-09-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Enplaned,Other,International,G,4985
+38733,2025,2025-09-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Deplaned,Other,International,A,2440
+38734,2025,2025-09-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Enplaned,Other,International,A,2596
+38735,2025,2025-09-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Deplaned,Other,International,A,3753
+38736,2025,2025-09-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Enplaned,Other,International,A,3094
+38737,2025,2025-09-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,115434
+38738,2025,2025-09-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,112613
+38739,2025,2025-09-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Deplaned,Other,International,A,5533
+38740,2025,2025-09-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Enplaned,Other,Terminal 1,B,5378
+38741,2025,2025-09-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Deplaned,Other,International,G,10223
+38742,2025,2025-09-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Enplaned,Other,International,G,11003
+38743,2025,2025-09-01,American Airlines,AA,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,149124
+38744,2025,2025-09-01,American Airlines,AA,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,148192
+38745,2025,2025-09-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Deplaned,Other,International,A,8343
+38746,2025,2025-09-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Enplaned,Other,International,A,6534
+38747,2025,2025-09-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Deplaned,Other,Terminal 2,D,5753
+38748,2025,2025-09-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Enplaned,Other,Terminal 2,D,5783
+38749,2025,2025-09-01,British Airways,BA,British Airways,BA,International,Europe,Deplaned,Other,International,A,20271
+38750,2025,2025-09-01,British Airways,BA,British Airways,BA,International,Europe,Enplaned,Other,International,A,20781
+38751,2025,2025-09-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Deplaned,Other,International,G,4256
+38752,2025,2025-09-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Enplaned,Other,International,G,4548
+38753,2025,2025-09-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Deplaned,Other,International,A,18421
+38754,2025,2025-09-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Enplaned,Other,International,A,17562
+38755,2025,2025-09-01,China Airlines,CI,China Airlines,CI,International,Asia,Deplaned,Other,International,A,5393
+38756,2025,2025-09-01,China Airlines,CI,China Airlines,CI,International,Asia,Enplaned,Other,International,A,5109
+38757,2025,2025-09-01,China Eastern,MU,China Eastern,MU,International,Asia,Deplaned,Other,International,A,3857
+38758,2025,2025-09-01,China Eastern,MU,China Eastern,MU,International,Asia,Enplaned,Other,International,A,3758
+38759,2025,2025-09-01,China Southern,CZ,China Southern,CZ,International,Asia,Deplaned,Other,International,A,5856
+38760,2025,2025-09-01,China Southern,CZ,China Southern,CZ,International,Asia,Enplaned,Other,International,A,5432
+38761,2025,2025-09-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Deplaned,Other,International,A,7098
+38762,2025,2025-09-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Enplaned,Other,International,A,7031
+38763,2025,2025-09-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,174955
+38764,2025,2025-09-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,171602
+38765,2025,2025-09-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Deplaned,Other,International,A,16763
+38766,2025,2025-09-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Enplaned,Other,International,A,13704
+38767,2025,2025-09-01,Emirates,EK,Emirates,EK,International,Middle East,Deplaned,Other,International,A,11341
+38768,2025,2025-09-01,Emirates,EK,Emirates,EK,International,Middle East,Enplaned,Other,International,A,10430
+38769,2025,2025-09-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Deplaned,Low Fare,Terminal 1,B,4220
+38770,2025,2025-09-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Enplaned,Low Fare,Terminal 1,B,4618
+38771,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Deplaned,Other,International,A,1457
+38772,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Enplaned,Other,International,A,1573
+38773,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Thru / Transit,Other,International,A,3397
+38774,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Europe,Deplaned,Other,International,A,2763
+38775,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Europe,Enplaned,Other,International,A,2839
+38776,2025,2025-09-01,French Bee,BF,French Bee,BF,International,Europe,Thru / Transit,Other,International,A,2980
+38777,2025,2025-09-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,International,A,37987
+38778,2025,2025-09-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,International,A,37145
+38779,2025,2025-09-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,Terminal 1,B,6667
+38780,2025,2025-09-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,Terminal 1,B,6678
+38781,2025,2025-09-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Deplaned,Other,International,A,16932
+38782,2025,2025-09-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Enplaned,Other,International,A,16902
+38783,2025,2025-09-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,11011
+38784,2025,2025-09-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,11025
+38785,2025,2025-09-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Deplaned,Other,International,A,6617
+38786,2025,2025-09-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Enplaned,Other,International,A,7479
+38787,2025,2025-09-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Thru / Transit,Other,International,A,93
+38788,2025,2025-09-01,Iberia,IB,Iberia,IB,International,Europe,Deplaned,Other,International,A,5997
+38789,2025,2025-09-01,Iberia,IB,Iberia,IB,International,Europe,Enplaned,Other,International,A,5960
+38790,2025,2025-09-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Deplaned,Other,International,A,9180
+38791,2025,2025-09-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Enplaned,Other,International,A,11206
+38792,2025,2025-09-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,3031
+38793,2025,2025-09-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,2728
+38794,2025,2025-09-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Deplaned,Low Fare,Terminal 1,B,51024
+38795,2025,2025-09-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Enplaned,Low Fare,Terminal 1,B,53046
+38796,2025,2025-09-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Deplaned,Other,International,A,8032
+38797,2025,2025-09-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Enplaned,Other,International,A,7846
+38798,2025,2025-09-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Deplaned,Other,International,A,7264
+38799,2025,2025-09-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Enplaned,Other,International,A,6143
+38800,2025,2025-09-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Deplaned,Other,International,G,18010
+38801,2025,2025-09-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Enplaned,Other,International,G,17847
+38802,2025,2025-09-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Deplaned,Other,International,A,7927
+38803,2025,2025-09-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Enplaned,Other,International,A,7691
+38804,2025,2025-09-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Deplaned,Other,International,A,1836
+38805,2025,2025-09-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Enplaned,Other,International,A,1521
+38806,2025,2025-09-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Deplaned,Other,International,A,2615
+38807,2025,2025-09-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Enplaned,Other,International,A,2298
+38808,2025,2025-09-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Deplaned,Other,International,A,8352
+38809,2025,2025-09-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Enplaned,Other,International,A,8455
+38810,2025,2025-09-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Deplaned,Other,International,G,7212
+38811,2025,2025-09-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Enplaned,Other,International,G,7026
+38812,2025,2025-09-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Deplaned,Other,International,G,10260
+38813,2025,2025-09-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Enplaned,Other,International,G,10948
+38814,2025,2025-09-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,50237
+38815,2025,2025-09-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,49862
+38816,2025,2025-09-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,8959
+38817,2025,2025-09-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,9304
+38818,2025,2025-09-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,5782
+38819,2025,2025-09-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,5586
+38820,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,95281
+38821,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,92228
+38822,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,1261
+38823,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,613
+38824,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Deplaned,Other,Terminal 3,F,1794
+38825,2025,2025-09-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,1809
+38826,2025,2025-09-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Deplaned,Low Fare,Terminal 2,D,101777
+38827,2025,2025-09-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Enplaned,Low Fare,Terminal 2,D,98632
+38828,2025,2025-09-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Thru / Transit,Low Fare,Terminal 2,D,150
+38829,2025,2025-09-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Deplaned,Other,International,A,5161
+38830,2025,2025-09-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Enplaned,Other,International,A,4759
+38831,2025,2025-09-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Deplaned,Low Fare,International,A,6147
+38832,2025,2025-09-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Enplaned,Low Fare,International,A,6088
+38833,2025,2025-09-01,Swiss International,LX,Swiss International,LX,International,Europe,Deplaned,Other,International,G,8650
+38834,2025,2025-09-01,Swiss International,LX,Swiss International,LX,International,Europe,Enplaned,Other,International,G,8724
+38835,2025,2025-09-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Deplaned,Other,International,A,7450
+38836,2025,2025-09-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Enplaned,Other,International,A,7272
+38837,2025,2025-09-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Deplaned,Other,International,A,5961
+38838,2025,2025-09-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Enplaned,Other,International,A,5607
+38839,2025,2025-09-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Deplaned,Other,International,A,14927
+38840,2025,2025-09-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Enplaned,Other,International,A,14285
+38841,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,A,3424
+38842,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,A,2254
+38843,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,International,A,2
+38844,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,G,19158
+38845,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,G,22255
+38846,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 2,D,157214
+38847,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 2,D,155065
+38848,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 2,D,11
+38849,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,E,254124
+38850,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,E,251546
+38851,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,E,10
+38852,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,315932
+38853,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,317602
+38854,2025,2025-09-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,F,392
+38855,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,A,1549
+38856,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,G,89676
+38857,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,G,88107
+38858,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,Terminal 3,F,4688
+38859,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Deplaned,Other,International,G,25723
+38860,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,G,23954
+38861,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,A,296
+38862,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,International,G,650
+38863,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,G,771
+38864,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 2,D,10091
+38865,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 2,D,8685
+38866,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,E,18727
+38867,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,E,15258
+38868,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,4779
+38869,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,7586
+38870,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,A,1334
+38871,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,G,6552
+38872,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,G,4403
+38873,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,A,459
+38874,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,G,69562
+38875,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,International,G,72888
+38876,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,Terminal 3,F,252
+38877,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,Terminal 3,F,5006
+38878,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,A,3401
+38879,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,A,202
+38880,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,G,16419
+38881,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,G,451
+38882,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 2,D,8890
+38883,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,E,6089
+38884,2025,2025-09-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,3856
+38885,2025,2025-09-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Deplaned,Other,International,A,3339
+38886,2025,2025-09-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Enplaned,Other,International,A,3032
+38887,2025,2025-09-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Deplaned,Other,International,A,12616
+38888,2025,2025-09-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Enplaned,Other,International,A,13710
+38889,2025,2025-09-01,WestJet,WS,WestJet,WS,International,Canada,Deplaned,Other,International,A,9899
+38890,2025,2025-09-01,WestJet,WS,WestJet,WS,International,Canada,Enplaned,Other,International,A,8842
+38891,2025,2025-09-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Deplaned,Other,International,A,5564
+38892,2025,2025-09-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Enplaned,Other,International,A,5371
+38893,2025,2025-10-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Deplaned,Other,Terminal 1,B,7340
+38894,2025,2025-10-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Enplaned,Other,Terminal 1,B,5409
+38895,2025,2025-10-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Deplaned,Other,International,A,6196
+38896,2025,2025-10-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Enplaned,Other,International,A,9468
+38897,2025,2025-10-01,Air Canada,AC,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,35823
+38898,2025,2025-10-01,Air Canada,AC,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,32724
+38899,2025,2025-10-01,Air China,CA,Air China,CA,International,Asia,Deplaned,Other,International,G,2545
+38900,2025,2025-10-01,Air China,CA,Air China,CA,International,Asia,Enplaned,Other,International,G,2647
+38901,2025,2025-10-01,Air France,AF,Air France,AF,International,Europe,Deplaned,Other,International,A,12075
+38902,2025,2025-10-01,Air France,AF,Air France,AF,International,Europe,Enplaned,Other,International,A,11174
+38903,2025,2025-10-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Deplaned,Other,International,A,9236
+38904,2025,2025-10-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Enplaned,Other,International,A,20717
+38905,2025,2025-10-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Deplaned,Other,International,G,4304
+38906,2025,2025-10-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Enplaned,Other,International,G,5177
+38907,2025,2025-10-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Deplaned,Other,International,A,2971
+38908,2025,2025-10-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Enplaned,Other,International,A,3869
+38909,2025,2025-10-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Deplaned,Other,International,A,3808
+38910,2025,2025-10-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Enplaned,Other,International,A,4592
+38911,2025,2025-10-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,120667
+38912,2025,2025-10-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,118967
+38913,2025,2025-10-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Deplaned,Other,International,A,8676
+38914,2025,2025-10-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Enplaned,Other,Terminal 1,B,9772
+38915,2025,2025-10-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Deplaned,Other,International,G,11361
+38916,2025,2025-10-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Enplaned,Other,International,G,12281
+38917,2025,2025-10-01,American Airlines,AA,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,159768
+38918,2025,2025-10-01,American Airlines,AA,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,163876
+38919,2025,2025-10-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Deplaned,Other,International,G,6614
+38920,2025,2025-10-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Enplaned,Other,International,G,8550
+38921,2025,2025-10-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Deplaned,Other,Terminal 2,D,6014
+38922,2025,2025-10-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Enplaned,Other,Terminal 2,D,6061
+38923,2025,2025-10-01,British Airways,BA,British Airways,BA,International,Europe,Deplaned,Other,International,A,21474
+38924,2025,2025-10-01,British Airways,BA,British Airways,BA,International,Europe,Enplaned,Other,International,A,19218
+38925,2025,2025-10-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Deplaned,Other,International,G,4358
+38926,2025,2025-10-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Enplaned,Other,International,G,4977
+38927,2025,2025-10-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Deplaned,Other,International,A,18728
+38928,2025,2025-10-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Enplaned,Other,International,A,23283
+38929,2025,2025-10-01,China Airlines,CI,China Airlines,CI,International,Asia,Deplaned,Other,International,A,8647
+38930,2025,2025-10-01,China Airlines,CI,China Airlines,CI,International,Asia,Enplaned,Other,International,A,6484
+38931,2025,2025-10-01,China Eastern,MU,China Eastern,MU,International,Asia,Deplaned,Other,International,A,3744
+38932,2025,2025-10-01,China Eastern,MU,China Eastern,MU,International,Asia,Enplaned,Other,International,A,3893
+38933,2025,2025-10-01,China Southern,CZ,China Southern,CZ,International,Asia,Deplaned,Other,International,A,5029
+38934,2025,2025-10-01,China Southern,CZ,China Southern,CZ,International,Asia,Enplaned,Other,International,A,5547
+38935,2025,2025-10-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Deplaned,Other,International,A,5474
+38936,2025,2025-10-01,Condor Flugdienst GmbH,DE,Condor Flugdienst GmbH,DE,International,Europe,Enplaned,Other,International,A,4263
+38937,2025,2025-10-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,187932
+38938,2025,2025-10-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,185095
+38939,2025,2025-10-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Deplaned,Other,International,A,18877
+38940,2025,2025-10-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Enplaned,Other,International,A,22788
+38941,2025,2025-10-01,Emirates,EK,Emirates,EK,International,Middle East,Deplaned,Other,International,A,11569
+38942,2025,2025-10-01,Emirates,EK,Emirates,EK,International,Middle East,Enplaned,Other,International,A,12994
+38943,2025,2025-10-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Deplaned,Low Fare,Terminal 1,B,4219
+38944,2025,2025-10-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Enplaned,Low Fare,Terminal 1,B,3872
+38945,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Deplaned,Other,International,A,1355
+38946,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Enplaned,Other,International,A,2107
+38947,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Thru / Transit,Other,International,A,3197
+38948,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Europe,Deplaned,Other,International,A,1950
+38949,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Europe,Enplaned,Other,International,A,2255
+38950,2025,2025-10-01,French Bee,BF,French Bee,BF,International,Europe,Thru / Transit,Other,International,A,3585
+38951,2025,2025-10-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,International,A,36632
+38952,2025,2025-10-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,International,A,37365
+38953,2025,2025-10-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,Terminal 1,B,16797
+38954,2025,2025-10-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,Terminal 1,B,16597
+38955,2025,2025-10-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Deplaned,Other,International,A,18488
+38956,2025,2025-10-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Enplaned,Other,International,A,17956
+38957,2025,2025-10-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,13477
+38958,2025,2025-10-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,12813
+38959,2025,2025-10-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Deplaned,Other,International,A,3521
+38960,2025,2025-10-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Enplaned,Other,International,A,2931
+38961,2025,2025-10-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Thru / Transit,Other,International,A,57
+38962,2025,2025-10-01,Iberia,IB,Iberia,IB,International,Europe,Deplaned,Other,International,A,2401
+38963,2025,2025-10-01,Iberia,IB,Iberia,IB,International,Europe,Enplaned,Other,International,A,1849
+38964,2025,2025-10-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Deplaned,Other,International,A,11082
+38965,2025,2025-10-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Enplaned,Other,International,A,12108
+38966,2025,2025-10-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,819
+38967,2025,2025-10-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,728
+38968,2025,2025-10-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Deplaned,Low Fare,Terminal 1,B,52979
+38969,2025,2025-10-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Enplaned,Low Fare,Terminal 1,B,54380
+38970,2025,2025-10-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Deplaned,Other,International,A,8305
+38971,2025,2025-10-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Enplaned,Other,International,A,8441
+38972,2025,2025-10-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Deplaned,Other,International,A,6908
+38973,2025,2025-10-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Enplaned,Other,International,A,7960
+38974,2025,2025-10-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Deplaned,Other,International,G,17467
+38975,2025,2025-10-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Enplaned,Other,International,G,15934
+38976,2025,2025-10-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Deplaned,Other,International,A,8864
+38977,2025,2025-10-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Enplaned,Other,International,A,10887
+38978,2025,2025-10-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Deplaned,Other,International,A,2528
+38979,2025,2025-10-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Enplaned,Other,International,A,1905
+38980,2025,2025-10-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Deplaned,Other,International,A,2014
+38981,2025,2025-10-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Enplaned,Other,International,A,2674
+38982,2025,2025-10-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Deplaned,Other,International,A,8594
+38983,2025,2025-10-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Enplaned,Other,International,A,9925
+38984,2025,2025-10-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Deplaned,Other,International,G,7808
+38985,2025,2025-10-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Enplaned,Other,International,G,6748
+38986,2025,2025-10-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Deplaned,Other,International,G,11008
+38987,2025,2025-10-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Enplaned,Other,International,G,11848
+38988,2025,2025-10-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,49992
+38989,2025,2025-10-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,50523
+38990,2025,2025-10-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,12556
+38991,2025,2025-10-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,12467
+38992,2025,2025-10-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,5581
+38993,2025,2025-10-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,5646
+38994,2025,2025-10-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,100620
+38995,2025,2025-10-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,98188
+38996,2025,2025-10-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Deplaned,Other,Terminal 3,F,1797
+38997,2025,2025-10-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,1885
+38998,2025,2025-10-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Deplaned,Low Fare,Terminal 2,D,110052
+38999,2025,2025-10-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Enplaned,Low Fare,Terminal 2,D,109467
+39000,2025,2025-10-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Thru / Transit,Low Fare,Terminal 2,D,201
+39001,2025,2025-10-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Deplaned,Other,International,A,5477
+39002,2025,2025-10-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Enplaned,Other,International,A,7543
+39003,2025,2025-10-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Deplaned,Low Fare,International,A,5434
+39004,2025,2025-10-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Enplaned,Low Fare,International,A,5345
+39005,2025,2025-10-01,Swiss International,LX,Swiss International,LX,International,Europe,Deplaned,Other,International,G,9358
+39006,2025,2025-10-01,Swiss International,LX,Swiss International,LX,International,Europe,Enplaned,Other,International,G,8256
+39007,2025,2025-10-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Deplaned,Other,International,A,8086
+39008,2025,2025-10-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Enplaned,Other,International,A,9982
+39009,2025,2025-10-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Deplaned,Other,International,A,5961
+39010,2025,2025-10-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Enplaned,Other,International,A,5607
+39011,2025,2025-10-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Deplaned,Other,International,A,14518
+39012,2025,2025-10-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Enplaned,Other,International,A,13443
+39013,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,A,2150
+39014,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,A,1947
+39015,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,G,16407
+39016,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,G,34446
+39017,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 2,D,183113
+39018,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 2,D,171816
+39019,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,E,292409
+39020,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,E,284953
+39021,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,E,12
+39022,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,339374
+39023,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,339927
+39024,2025,2025-10-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,F,285
+39025,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,A,2240
+39026,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Asia,Thru / Transit,Other,International,A,318
+39027,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,G,96369
+39028,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,G,108880
+39029,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,Terminal 3,F,10908
+39030,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Deplaned,Other,International,A,402
+39031,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,A,251
+39032,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Deplaned,Other,International,G,24124
+39033,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,G,28394
+39034,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,International,A,330
+39035,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,A,448
+39036,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,International,G,1450
+39037,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,G,442
+39038,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 2,D,14419
+39039,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 2,D,12183
+39040,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,E,13453
+39041,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,E,12232
+39042,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,4663
+39043,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,6693
+39044,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,A,184
+39045,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,A,1800
+39046,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,G,5923
+39047,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,G,4632
+39048,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,A,394
+39049,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,G,72381
+39050,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,International,G,62093
+39051,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,Terminal 3,F,1305
+39052,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,A,3138
+39053,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,G,23660
+39054,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,G,1483
+39055,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 2,D,12392
+39056,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,E,10413
+39057,2025,2025-10-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,7135
+39058,2025,2025-10-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Deplaned,Other,International,A,3728
+39059,2025,2025-10-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Enplaned,Other,International,A,4022
+39060,2025,2025-10-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Deplaned,Other,International,A,9345
+39061,2025,2025-10-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Enplaned,Other,International,A,8817
+39062,2025,2025-10-01,WestJet,WS,WestJet,WS,International,Canada,Deplaned,Other,International,A,7279
+39063,2025,2025-10-01,WestJet,WS,WestJet,WS,International,Canada,Enplaned,Other,International,A,6440
+39064,2025,2025-10-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Deplaned,Other,International,A,6876
+39065,2025,2025-10-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Enplaned,Other,International,A,7129
+39066,2025,2025-11-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Deplaned,Other,Terminal 1,B,5006
+39067,2025,2025-11-01,"Aer Lingus, Ltd.",EI,"Aer Lingus, Ltd.",EI,International,Europe,Enplaned,Other,Terminal 1,B,4549
+39068,2025,2025-11-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Deplaned,Other,International,A,8938
+39069,2025,2025-11-01,Aeromexico,AM,Aeromexico,AM,International,Mexico,Enplaned,Other,International,A,9028
+39070,2025,2025-11-01,Air Canada,AC,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,25316
+39071,2025,2025-11-01,Air Canada,AC,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,24307
+39072,2025,2025-11-01,Air China,CA,Air China,CA,International,Asia,Deplaned,Other,International,G,2536
+39073,2025,2025-11-01,Air China,CA,Air China,CA,International,Asia,Enplaned,Other,International,G,2602
+39074,2025,2025-11-01,Air France,AF,Air France,AF,International,Europe,Deplaned,Other,International,A,6694
+39075,2025,2025-11-01,Air France,AF,Air France,AF,International,Europe,Enplaned,Other,International,A,7533
+39076,2025,2025-11-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Deplaned,Other,International,A,10762
+39077,2025,2025-11-01,Air India Limited,AI,Air India Limited,AI,International,Asia,Enplaned,Other,International,A,15243
+39078,2025,2025-11-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Deplaned,Other,International,G,4331
+39079,2025,2025-11-01,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Enplaned,Other,International,G,4690
+39080,2025,2025-11-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Deplaned,Other,International,A,3308
+39081,2025,2025-11-01,Air Pacific Limited dba Fiji Airways,FJ,Air Pacific Limited dba Fiji Airways,FJ,International,Australia / Oceania,Enplaned,Other,International,A,3059
+39082,2025,2025-11-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Deplaned,Other,International,A,3714
+39083,2025,2025-11-01,"Air Premia, Inc.",YP,"Air Premia, Inc.",YP,International,Asia,Enplaned,Other,International,A,3349
+39084,2025,2025-11-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,109585
+39085,2025,2025-11-01,Alaska Airlines,AS,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,111266
+39086,2025,2025-11-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Deplaned,Other,International,A,13706
+39087,2025,2025-11-01,Alaska Airlines,AS,Alaska Airlines,AS,International,Mexico,Enplaned,Other,Terminal 1,B,14974
+39088,2025,2025-11-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Deplaned,Other,International,G,11326
+39089,2025,2025-11-01,"All Nippon Company Airways, Ltd.",NH,"All Nippon Company Airways, Ltd.",NH,International,Asia,Enplaned,Other,International,G,11483
+39090,2025,2025-11-01,American Airlines,AA,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,129338
+39091,2025,2025-11-01,American Airlines,AA,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,130315
+39092,2025,2025-11-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Deplaned,Other,International,G,6216
+39093,2025,2025-11-01,Asiana Airlines,OZ,Asiana Airlines,OZ,International,Asia,Enplaned,Other,International,G,6393
+39094,2025,2025-11-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Deplaned,Other,Terminal 2,D,5685
+39095,2025,2025-11-01,"Breeze Aviation Group, Inc.",MX,"Breeze Aviation Group, Inc.",MX,Domestic,US,Enplaned,Other,Terminal 2,D,5905
+39096,2025,2025-11-01,British Airways,BA,British Airways,BA,International,Europe,Deplaned,Other,International,A,16896
+39097,2025,2025-11-01,British Airways,BA,British Airways,BA,International,Europe,Enplaned,Other,International,A,17432
+39098,2025,2025-11-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Deplaned,Other,International,G,3866
+39099,2025,2025-11-01,"COPA Airlines, Inc.",CM,"COPA Airlines, Inc.",CM,International,Central America,Enplaned,Other,International,G,4731
+39100,2025,2025-11-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Deplaned,Other,International,A,22880
+39101,2025,2025-11-01,Cathay Pacific,CX,Cathay Pacific,CX,International,Asia,Enplaned,Other,International,A,21927
+39102,2025,2025-11-01,China Airlines,CI,China Airlines,CI,International,Asia,Deplaned,Other,International,A,7999
+39103,2025,2025-11-01,China Airlines,CI,China Airlines,CI,International,Asia,Enplaned,Other,International,A,9054
+39104,2025,2025-11-01,China Eastern,MU,China Eastern,MU,International,Asia,Deplaned,Other,International,A,3733
+39105,2025,2025-11-01,China Eastern,MU,China Eastern,MU,International,Asia,Enplaned,Other,International,A,3776
+39106,2025,2025-11-01,China Southern,CZ,China Southern,CZ,International,Asia,Deplaned,Other,International,A,4727
+39107,2025,2025-11-01,China Southern,CZ,China Southern,CZ,International,Asia,Enplaned,Other,International,A,4891
+39108,2025,2025-11-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,162562
+39109,2025,2025-11-01,Delta Air Lines,DL,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,162318
+39110,2025,2025-11-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Deplaned,Other,International,A,21654
+39111,2025,2025-11-01,EVA Airways,BR,EVA Airways,BR,International,Asia,Enplaned,Other,International,A,23213
+39112,2025,2025-11-01,Emirates,EK,Emirates,EK,International,Middle East,Deplaned,Other,International,A,11388
+39113,2025,2025-11-01,Emirates,EK,Emirates,EK,International,Middle East,Enplaned,Other,International,A,13907
+39114,2025,2025-11-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Deplaned,Low Fare,Terminal 1,B,2680
+39115,2025,2025-11-01,"Flair Airlines, Ltd.",F8,"Flair Airlines, Ltd.",F8,International,Canada,Enplaned,Low Fare,Terminal 1,B,2932
+39116,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Deplaned,Other,International,A,1009
+39117,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Enplaned,Other,International,A,1194
+39118,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Australia / Oceania,Thru / Transit,Other,International,A,2478
+39119,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Europe,Deplaned,Other,International,A,1720
+39120,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Europe,Enplaned,Other,International,A,1217
+39121,2025,2025-11-01,French Bee,BF,French Bee,BF,International,Europe,Thru / Transit,Other,International,A,1728
+39122,2025,2025-11-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,International,A,44692
+39123,2025,2025-11-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,International,A,45439
+39124,2025,2025-11-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Deplaned,Low Fare,Terminal 1,B,7475
+39125,2025,2025-11-01,Frontier Airlines,F9,Frontier Airlines,F9,Domestic,US,Enplaned,Low Fare,Terminal 1,B,7453
+39126,2025,2025-11-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Deplaned,Other,International,A,16653
+39127,2025,2025-11-01,Hawaiian Airlines,HA,Hawaiian Airlines,HA,Domestic,US,Enplaned,Other,International,A,15019
+39128,2025,2025-11-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,16337
+39129,2025,2025-11-01,Horizon Air,QX,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,16122
+39130,2025,2025-11-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Deplaned,Other,International,A,2325
+39131,2025,2025-11-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Enplaned,Other,International,A,2337
+39132,2025,2025-11-01,ITA Airways,AZ,ITA Airways,AZ,International,Europe,Thru / Transit,Other,International,A,93
+39133,2025,2025-11-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Deplaned,Other,International,A,10127
+39134,2025,2025-11-01,Japan Airlines,JL,Japan Airlines,JL,International,Asia,Enplaned,Other,International,A,10358
+39135,2025,2025-11-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Deplaned,Other,Terminal 2,D,3893
+39136,2025,2025-11-01,Jazz Aviation,QK,Air Canada,AC,International,Canada,Enplaned,Other,Terminal 2,D,3758
+39137,2025,2025-11-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Deplaned,Low Fare,Terminal 1,B,50876
+39138,2025,2025-11-01,JetBlue Airways,B6,JetBlue Airways,B6,Domestic,US,Enplaned,Low Fare,Terminal 1,B,45432
+39139,2025,2025-11-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Deplaned,Other,International,A,7289
+39140,2025,2025-11-01,KLM Royal Dutch Airlines,KL,KLM Royal Dutch Airlines,KL,International,Europe,Enplaned,Other,International,A,8730
+39141,2025,2025-11-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Deplaned,Other,International,A,7470
+39142,2025,2025-11-01,Korean Air Lines,KE,Korean Air Lines,KE,International,Asia,Enplaned,Other,International,A,7365
+39143,2025,2025-11-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Deplaned,Other,International,G,17437
+39144,2025,2025-11-01,Lufthansa German Airlines,LH,Lufthansa German Airlines,LH,International,Europe,Enplaned,Other,International,G,18248
+39145,2025,2025-11-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Deplaned,Other,International,A,8358
+39146,2025,2025-11-01,Philippine Airlines,PR,Philippine Airlines,PR,International,Asia,Enplaned,Other,International,A,10078
+39147,2025,2025-11-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Deplaned,Other,International,A,2922
+39148,2025,2025-11-01,Porter Airlines (Canada) Limited,PD,Porter Airlines (Canada) Limited,PD,International,Canada,Enplaned,Other,International,A,2562
+39149,2025,2025-11-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Deplaned,Other,International,A,1688
+39150,2025,2025-11-01,Qantas Airways,QF,Qantas Airways,QF,International,Australia / Oceania,Enplaned,Other,International,A,1876
+39151,2025,2025-11-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Deplaned,Other,International,A,8306
+39152,2025,2025-11-01,Qatar Airways,QR,Qatar Airways,QR,International,Middle East,Enplaned,Other,International,A,9706
+39153,2025,2025-11-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Deplaned,Other,International,G,5131
+39154,2025,2025-11-01,SAS Airlines,SK,SAS Airlines,SK,International,Europe,Enplaned,Other,International,G,5576
+39155,2025,2025-11-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Deplaned,Other,International,G,11260
+39156,2025,2025-11-01,Singapore Airlines,SQ,Singapore Airlines,SQ,International,Asia,Enplaned,Other,International,G,11808
+39157,2025,2025-11-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Deplaned,Other,Terminal 1,B,43455
+39158,2025,2025-11-01,SkyWest Airlines,OO,Alaska Airlines,AS,Domestic,US,Enplaned,Other,Terminal 1,B,44405
+39159,2025,2025-11-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Deplaned,Other,Terminal 1,B,8652
+39160,2025,2025-11-01,SkyWest Airlines,OO,American Airlines,AA,Domestic,US,Enplaned,Other,Terminal 1,B,9183
+39161,2025,2025-11-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Deplaned,Other,Terminal 1,C,3889
+39162,2025,2025-11-01,SkyWest Airlines,OO,Delta Air Lines,DL,Domestic,US,Enplaned,Other,Terminal 1,C,3846
+39163,2025,2025-11-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,96335
+39164,2025,2025-11-01,SkyWest Airlines,OO,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,94751
+39165,2025,2025-11-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Deplaned,Other,Terminal 3,F,1555
+39166,2025,2025-11-01,SkyWest Airlines,OO,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,1796
+39167,2025,2025-11-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Deplaned,Low Fare,Terminal 2,D,99451
+39168,2025,2025-11-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Enplaned,Low Fare,Terminal 2,D,98820
+39169,2025,2025-11-01,Southwest Airlines,WN,Southwest Airlines,WN,Domestic,US,Thru / Transit,Low Fare,Terminal 2,D,62
+39170,2025,2025-11-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Deplaned,Other,International,A,6598
+39171,2025,2025-11-01,Starlux Airlines Co. LTD,JX,Starlux Airlines Co. LTD,JX,International,Asia,Enplaned,Other,International,A,8074
+39172,2025,2025-11-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Deplaned,Low Fare,International,A,4359
+39173,2025,2025-11-01,Sun Country Airlines,SY,Sun Country Airlines,SY,Domestic,US,Enplaned,Low Fare,International,A,4417
+39174,2025,2025-11-01,Swiss International,LX,Swiss International,LX,International,Europe,Deplaned,Other,International,G,7203
+39175,2025,2025-11-01,Swiss International,LX,Swiss International,LX,International,Europe,Enplaned,Other,International,G,7824
+39176,2025,2025-11-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Deplaned,Other,International,A,8395
+39177,2025,2025-11-01,"TACA International Airlines, S.A.",TA,"TACA International Airlines, S.A.",TA,International,Central America,Enplaned,Other,International,A,10254
+39178,2025,2025-11-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Deplaned,Other,International,A,4386
+39179,2025,2025-11-01,TAP Air Portugal,TP,TAP Air Portugal,TP,International,Europe,Enplaned,Other,International,A,4215
+39180,2025,2025-11-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Deplaned,Other,International,A,11600
+39181,2025,2025-11-01,Turkish Airlines,TK,Turkish Airlines,TK,International,Europe,Enplaned,Other,International,A,13295
+39182,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,A,2563
+39183,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,A,3948
+39184,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,International,G,20526
+39185,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,International,G,26234
+39186,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 2,D,171626
+39187,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 2,D,165981
+39188,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 2,D,10
+39189,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,E,250536
+39190,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,E,248742
+39191,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,E,4
+39192,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,291270
+39193,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Enplaned,Other,Terminal 3,F,310890
+39194,2025,2025-11-01,United Airlines,UA,United Airlines,UA,Domestic,US,Thru / Transit,Other,Terminal 3,F,435
+39195,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,A,4894
+39196,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,A,648
+39197,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Deplaned,Other,International,G,109148
+39198,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,International,G,107789
+39199,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Thru / Transit,Other,International,G,256
+39200,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Asia,Enplaned,Other,Terminal 3,F,8487
+39201,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,A,217
+39202,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Deplaned,Other,International,G,25754
+39203,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Australia / Oceania,Enplaned,Other,International,G,26322
+39204,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,A,166
+39205,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,International,G,157
+39206,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 2,D,5597
+39207,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 2,D,4635
+39208,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,E,13105
+39209,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,E,13292
+39210,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Deplaned,Other,Terminal 3,F,5134
+39211,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Canada,Enplaned,Other,Terminal 3,F,5921
+39212,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,A,1632
+39213,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Central America,Deplaned,Other,International,G,5841
+39214,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Central America,Enplaned,Other,International,G,5636
+39215,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,A,690
+39216,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,G,33221
+39217,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Europe,Enplaned,Other,International,G,37930
+39218,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,A,4642
+39219,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,G,30655
+39220,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,International,G,3037
+39221,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 2,D,13974
+39222,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,E,13866
+39223,2025,2025-11-01,United Airlines,UA,United Airlines,UA,International,Mexico,Enplaned,Other,Terminal 3,F,6362
+39224,2025,2025-11-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Deplaned,Other,International,A,3875
+39225,2025,2025-11-01,Vietnam Airlines JSC,VN,Vietnam Airlines JSC,VN,International,Asia,Enplaned,Other,International,A,3611
+39226,2025,2025-11-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Deplaned,Other,International,A,5707
+39227,2025,2025-11-01,Virgin Atlantic,VS,Virgin Atlantic,VS,International,Europe,Enplaned,Other,International,A,7109
+39228,2025,2025-11-01,WestJet,WS,WestJet,WS,International,Canada,Deplaned,Other,International,A,2445
+39229,2025,2025-11-01,WestJet,WS,WestJet,WS,International,Canada,Enplaned,Other,International,A,2487
+39230,2025,2025-11-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Deplaned,Other,International,A,7279
+39231,2025,2025-11-01,ZIPAIR Tokyo Inc,ZG,ZIPAIR Tokyo Inc,ZG,International,Asia,Enplaned,Other,International,A,7318

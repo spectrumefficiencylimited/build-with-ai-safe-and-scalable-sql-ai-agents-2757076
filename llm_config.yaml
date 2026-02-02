@@ -136,3 +136,38 @@ agent:
   read_only: true
   max_result_limit: 10000
   enforce_limit: true
+  # Memory settings
+  memory: false        # Enable conversation memory (default: false)
+  memory_size: 10      # Number of Q&A pairs to retain (default: 10)
+
+# Logging Configuration
+logging:
+  enabled: false  # Enable structured logging (default: false for backward compatibility)
+  level: "INFO"  # Logging level: DEBUG, INFO, WARNING, ERROR
+
+  # Console output
+  console:
+    enabled: true
+    format: "human"  # "human" (readable) or "json" (structured)
+
+  # File output
+  file:
+    enabled: false
+    path: "logs/sql_agent.log"  # Log file path
+    format: "json"  # "human" or "json"
+    rotation:
+      max_bytes: 10485760  # 10MB per file
+      backup_count: 5  # Keep 5 backup files
+
+  # LangChain callback integration
+  langchain:
+    enabled: true
+    track_tokens: true  # Track token usage
+    track_timing: true  # Track LLM invocation timing
+
+  # Performance tracking
+  performance:
+    track_llm_calls: true  # Log all LLM invocations
+    track_db_queries: true  # Log database operations
+    track_validation: true  # Log validation decisions
+    slow_query_threshold_ms: 1000  # Log queries slower than this threshold

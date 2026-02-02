@@ -3,7 +3,7 @@ networks:
     driver: bridge
 services:
   python:
-    image: docker.io/rkrispin/python-dev-sql-ai-agent:0.0.4
+    image: docker.io/rkrispin/python-dev-sql-ai-agent:0.0.5
     volumes:
       # Mount the root folder that contains .git
       - .:/workspace:cached
