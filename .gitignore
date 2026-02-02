@@ -52,7 +52,7 @@ ipython_config.py
 # PyCharm
 .idea/
 
-
+*.bkp
 
 # mypy
 .mypy_cache/
