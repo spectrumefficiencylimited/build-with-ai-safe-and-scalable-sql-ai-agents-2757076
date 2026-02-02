@@ -11,6 +11,7 @@ from sql_ai_agent.sql_validator import (
     ValidationConfig,
     QueryValidationError,
 )
+from sql_ai_agent.skill_manager import SkillManager
 from dataclasses import dataclass
 import pandas as pd
 from langchain_openai import ChatOpenAI
@@ -309,6 +310,9 @@ class SqlAgent:
         log_level="INFO",
         log_file=None,
         log_to_console=True,
+        # Skill parameters
+        skill=False,
+        skills_dir=None,
     ):
         """Initialize SQL Agent with LLM and database configuration.
 
@@ -332,6 +336,8 @@ class SqlAgent:
             log_level: Logging level - DEBUG, INFO, WARNING, ERROR (default: INFO)
             log_file: Path to log file, None for console only (default: None)
             log_to_console: Whether to output logs to console (default: True)
+            skill: Enable skill-based context injection (default: False)
+            skills_dir: Path to skills directory, None for default location (default: None)
         """
         self.fallback = fallback
         self.fallback_model = fallback_model
@@ -395,6 +401,53 @@ class SqlAgent:
         self.character_distinct_values_reformated = (
             ph.format_distinct_values_for_prompt(self.character_distinct_values)
         )
+
+        # Initialize skill system
+        self.skill_enabled = skill
+        self.skill_content = None
+        if skill:
+            skill_manager = SkillManager(skills_dir=skills_dir)
+            # Try multiple naming patterns for skill files
+            skill_patterns = [
+                tbl_name,  # Exact table name
+                f"{tbl_name}_context",  # Table name + _context
+                f"sfo_{tbl_name}_context",  # SFO prefix (for SFO datasets)
+            ]
+
+            skill_loaded = False
+            for skill_name in skill_patterns:
+                try:
+                    self.skill_content = skill_manager.load_skill(skill_name)
+                    skill_loaded = True
+                    if self.logger:
+                        self.logger.info(
+                            f"Skill loaded: '{skill_name}'",
+                            extra={
+                                "operation_type": "skill_loading",
+                                "skill_name": skill_name,
+                                "skill_size": len(self.skill_content),
+                                "table_name": tbl_name,
+                            },
+                        )
+                    break  # Stop trying if skill is found
+                except FileNotFoundError:
+                    continue  # Try next pattern
+
+            if not skill_loaded:
+                # No skill found for any pattern
+                if self.logger:
+                    self.logger.warning(
+                        f"No skill found for table '{tbl_name}' (tried: {', '.join(skill_patterns)})",
+                        extra={
+                            "operation_type": "skill_loading",
+                            "table_name": tbl_name,
+                            "patterns_tried": skill_patterns,
+                        },
+                    )
+                else:
+                    print(f"⚠️  No skill found for table '{tbl_name}', skill parameter will be ignored")
+                self.skill_enabled = False
+
         self.db_type = schema.db_type
         self.prompt_template = ph.set_prompt_template()
         self.chain = self.prompt_template | self.llm
@@ -426,6 +479,8 @@ class SqlAgent:
                     "memory_size": memory_size,
                     "table_name": tbl_name,
                     "database_type": self.db_type,
+                    "skill_enabled": self.skill_enabled,
+                    "skill_loaded": self.skill_content is not None,
                 },
             )
 
@@ -486,6 +541,11 @@ class SqlAgent:
         if distinct_char_values:
             additional_context = (
                 additional_context + "\n" + self.character_distinct_values_reformated
+            )
+
+        if self.skill_enabled and self.skill_content:
+            additional_context = (
+                additional_context + "\n" + self.skill_content
             )
 
         llm_output = sql_agent(
