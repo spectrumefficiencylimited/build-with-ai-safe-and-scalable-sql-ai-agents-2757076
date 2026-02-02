@@ -52,10 +52,7 @@ ipython_config.py
 # PyCharm
 .idea/
 
-# VSCode
-.vscode/
-!.vscode/settings.json
-!.vscode/extensions.json
+
 
 # mypy
 .mypy_cache/
