@@ -14,6 +14,7 @@ LangChain chains or LLMs.
 from langchain_core.callbacks import BaseCallbackHandler
 from typing import Any, Dict, List, Optional
 import time
+from sql_ai_agent.token_utils import estimate_tokens
 
 
 class LLMMetricsCallback(BaseCallbackHandler):
@@ -26,28 +27,40 @@ class LLMMetricsCallback(BaseCallbackHandler):
     Attributes:
         logger: SQLAgentLogger instance for logging
         session_id: Unique session identifier
+        agent_config: Dictionary of agent configuration settings
         invocation_count: Total number of LLM calls in this session
         total_tokens: Cumulative token count
         total_cost: Estimated total cost (if pricing configured)
 
     Usage:
-        callback = LLMMetricsCallback(logger, session_id="abc123")
+        agent_config = {
+            'model': 'gpt-4o',
+            'read_only': True,
+            'enforce_limit': True,
+            'max_result_limit': 10000,
+            'memory_enabled': True,
+            'memory_size': 10,
+            'skill_enabled': False
+        }
+        callback = LLMMetricsCallback(logger, session_id="abc123", agent_config=agent_config)
         llm = ChatOpenAI(
             model="gpt-4o",
             callbacks=[callback]
         )
     """
 
-    def __init__(self, logger, session_id: str):
+    def __init__(self, logger, session_id: str, agent_config: Optional[Dict[str, Any]] = None):
         """
         Initialize the metrics callback.
 
         Args:
             logger: SQLAgentLogger instance for logging
             session_id: Unique session identifier
+            agent_config: Optional dictionary of agent configuration settings
         """
         self.logger = logger
         self.session_id = session_id
+        self.agent_config = agent_config or {}
         self.invocation_count = 0
         self.total_tokens = 0
         self.total_cost = 0.0
@@ -59,7 +72,8 @@ class LLMMetricsCallback(BaseCallbackHandler):
         """
         Called when LLM starts running.
 
-        Logs the start of an LLM invocation with model details.
+        Logs the start of an LLM invocation with model details, agent settings,
+        and prompt token estimation.
 
         Args:
             serialized: Serialized LLM configuration
@@ -71,14 +85,37 @@ class LLMMetricsCallback(BaseCallbackHandler):
 
         model_name = serialized.get('name', 'unknown')
 
-        self.logger.debug(
-            f"LLM invocation started: {model_name}",
-            extra={
-                'operation_type': 'llm_invocation',
-                'model_name': model_name,
-                'prompt_count': len(prompts),
-                'invocation_number': self.invocation_count
+        # Estimate prompt tokens
+        total_prompt_chars = sum(len(p) for p in prompts)
+        estimated_prompt_tokens = estimate_tokens(''.join(prompts), model_name)
+
+        # Build log extra fields
+        log_extra = {
+            'operation_type': 'llm_invocation',
+            'model_name': model_name,
+            'prompt_count': len(prompts),
+            'invocation_number': self.invocation_count,
+            'estimated_prompt_tokens': estimated_prompt_tokens,
+            'total_prompt_chars': total_prompt_chars,
+        }
+
+        # Add agent configuration settings if available
+        if self.agent_config:
+            log_extra['agent_config'] = {
+                'model': self.agent_config.get('model'),
+                'read_only': self.agent_config.get('read_only'),
+                'enforce_limit': self.agent_config.get('enforce_limit'),
+                'max_result_limit': self.agent_config.get('max_result_limit'),
+                'memory_enabled': self.agent_config.get('memory_enabled'),
+                'memory_size': self.agent_config.get('memory_size'),
+                'skill_enabled': self.agent_config.get('skill_enabled'),
+                'fallback_enabled': self.agent_config.get('fallback_enabled'),
+                'fallback_model': self.agent_config.get('fallback_model'),
             }
+
+        self.logger.debug(
+            f"LLM invocation started: {model_name} (~{estimated_prompt_tokens} tokens)",
+            extra=log_extra
         )
 
     def on_llm_end(self, response, **kwargs: Any) -> None:

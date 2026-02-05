@@ -310,6 +310,7 @@ class SqlAgent:
         log_level="INFO",
         log_file=None,
         log_to_console=True,
+        log_llm_output=False,
         # Skill parameters
         skill=False,
         skills_dir=None,
@@ -336,6 +337,7 @@ class SqlAgent:
             log_level: Logging level - DEBUG, INFO, WARNING, ERROR (default: INFO)
             log_file: Path to log file, None for console only (default: None)
             log_to_console: Whether to output logs to console (default: True)
+            log_llm_output: Whether to log LLM output content separately from metrics (default: False)
             skill: Enable skill-based context injection (default: False)
             skills_dir: Path to skills directory, None for default location (default: None)
         """
@@ -366,13 +368,33 @@ class SqlAgent:
                 log_to_console=log_to_console,
             )
 
+            # Build agent configuration for callback logging
+            agent_config = {
+                'model': model,
+                'read_only': read_only,
+                'enforce_limit': enforce_limit,
+                'max_result_limit': max_result_limit,
+                'memory_enabled': memory,
+                'memory_size': memory_size,
+                'skill_enabled': skill,
+                'fallback_enabled': fallback,
+                'fallback_model': fallback_model if fallback else None,
+                'database_type': None,  # Will be set after schema detection
+                'table_name': tbl_name,
+            }
+
             # Create LangChain callback for LLM tracking
             self.llm_callback = LLMMetricsCallback(
-                logger=self.logger, session_id=self.logger.extra["session_id"]
+                logger=self.logger,
+                session_id=self.logger.extra["session_id"],
+                agent_config=agent_config
             )
         else:
             self.logger = None
             self.llm_callback = None
+
+        # Store logging preferences
+        self.log_llm_output = log_llm_output
 
         # Initialize SQL validator
         self.validator = SQLValidator(
@@ -449,6 +471,11 @@ class SqlAgent:
                 self.skill_enabled = False
 
         self.db_type = schema.db_type
+
+        # Update agent config with database type if logging is enabled
+        if self.llm_callback and hasattr(self, 'llm_callback'):
+            self.llm_callback.agent_config['database_type'] = self.db_type
+
         self.prompt_template = ph.set_prompt_template()
         self.chain = self.prompt_template | self.llm
 
@@ -481,6 +508,7 @@ class SqlAgent:
                     "database_type": self.db_type,
                     "skill_enabled": self.skill_enabled,
                     "skill_loaded": self.skill_content is not None,
+                    "log_llm_output": log_llm_output,
                 },
             )
 
@@ -559,8 +587,8 @@ class SqlAgent:
             use_memory=self.memory_enabled,
         )
 
-        # Log the LLM output (detailed)
-        if self.logger:
+        # Log the LLM output (detailed) - only if log_llm_output is enabled
+        if self.logger and self.log_llm_output:
             self.logger.debug(
                 "LLM generated SQL query",
                 extra={
@@ -598,10 +626,11 @@ Schema: {self.schema}"""
             prompt=prompt_text,
         )
 
-        # Log the final result (detailed)
+        # Log the final result with appropriate level
         if self.logger:
-            self.logger.info(
-                "Query processing completed",
+            log_method = self.logger.error if not query.success else self.logger.info
+            log_method(
+                "Query processing completed" if query.success else "Query processing failed",
                 extra={
                     "operation_type": "query_result",
                     "question": question,
@@ -679,8 +708,8 @@ Schema: {self.schema}"""
                     debug_memory=debug_memory,
                 )
 
-                # Log debug LLM output
-                if self.logger:
+                # Log debug LLM output - only if log_llm_output is enabled
+                if self.logger and self.log_llm_output:
                     self.logger.debug(
                         "Debug LLM response",
                         extra={
@@ -736,8 +765,8 @@ Schema: {self.schema}"""
                 use_memory=False,  # Don't add fallback to memory (it's a retry)
             )
 
-            # Log fallback LLM output
-            if self.logger:
+            # Log fallback LLM output - only if log_llm_output is enabled
+            if self.logger and self.log_llm_output:
                 self.logger.debug(
                     "Fallback LLM response",
                     extra={

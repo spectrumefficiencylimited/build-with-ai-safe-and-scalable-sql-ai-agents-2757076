@@ -1,12 +1,7 @@
 import pandas as pd
 import duckdb
 import ibis
-import logging
-import time
 from dataclasses import dataclass
-
-# Create module-level logger
-logger = logging.getLogger('sql_ai_agent.db_handler')
 
 
 @dataclass
@@ -81,22 +76,50 @@ def query_execute(con, query: str) -> pd.DataFrame:
         query: SQL query string to execute
 
     Returns:
-        DataFrame with query results
+        DataFrame with query results (SELECT queries)
+        DataFrame with execution info (DELETE/UPDATE/INSERT queries)
 
     Raises:
         TypeError: If connection type is unsupported
     """
-    start_time = time.perf_counter()
-
     try:
+        # Detect if this is a write operation (DELETE, UPDATE, INSERT)
+        query_upper = query.strip().upper()
+        is_write_operation = any(
+            query_upper.startswith(keyword)
+            for keyword in ['DELETE', 'UPDATE', 'INSERT', 'CREATE', 'DROP', 'ALTER', 'TRUNCATE']
+        )
+
         # Detect Ibis Postgres backend
         if getattr(con, "name", None) == "postgres":
-            df = con.sql(query).execute()
+            if is_write_operation:
+                # Use raw_sql for write operations
+                con.raw_sql(query)
+                # Return a DataFrame indicating success
+                return pd.DataFrame({
+                    'status': ['success'],
+                    'message': ['Query executed successfully'],
+                    'query_type': ['write_operation']
+                })
+            else:
+                # Use sql() for SELECT queries
+                df = con.sql(query).execute()
             db_type = "postgres"
 
         # Detect DuckDB backend (Ibis backend name is 'duckdb')
         elif getattr(con, "name", None) == "duckdb":
-            df = con.con.sql(query).df()
+            if is_write_operation:
+                # Use raw execute for write operations
+                con.con.execute(query)
+                # Return a DataFrame indicating success
+                return pd.DataFrame({
+                    'status': ['success'],
+                    'message': ['Query executed successfully'],
+                    'query_type': ['write_operation']
+                })
+            else:
+                # Use sql() for SELECT queries
+                df = con.con.sql(query).df()
             db_type = "duckdb"
 
         else:
@@ -105,35 +128,11 @@ def query_execute(con, query: str) -> pd.DataFrame:
                 "Expected Ibis Postgres backend or Ibis DuckDB backend."
             )
 
-        duration_ms = (time.perf_counter() - start_time) * 1000
-
-        logger.info(
-            "Query executed successfully",
-            extra={
-                'operation_type': 'query_execution',
-                'duration_ms': round(duration_ms, 2),
-                'rows_returned': len(df),
-                'query_length': len(query),
-                'database_type': db_type
-            }
-        )
-
-        return df
+        # Return the dataframe for SELECT queries
+        if not is_write_operation:
+            return df
 
     except Exception as e:
-        duration_ms = (time.perf_counter() - start_time) * 1000
-
-        logger.error(
-            f"Query execution failed: {str(e)}",
-            extra={
-                'operation_type': 'query_execution',
-                'duration_ms': round(duration_ms, 2),
-                'error_type': type(e).__name__,
-                'query': query[:200]  # Log first 200 chars to avoid huge logs
-            },
-            exc_info=True
-        )
-
         raise
 
 def _quote_ident(name: str) -> str:
