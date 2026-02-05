@@ -21,6 +21,13 @@ if project_root not in sys.path:
 
 from sql_ai_agent.SqlAgent import SqlAgent
 from sql_ai_agent.llm_config_loader import load_config
+from sql_ai_agent.log_database import (
+    init_postgres_log_schema,
+    init_duckdb_log_schema,
+    DatabaseLogHandler,
+    verify_log_table,
+)
+from sql_ai_agent.logger import setup_logging
 
 # Page configuration
 st.set_page_config(
@@ -171,7 +178,7 @@ def init_database_connection(db_type, host="postgres", port=5432):
             con = ibis.duckdb.connect()
             # Load sample data for DuckDB
             try:
-                df = pd.read_csv(os.path.join(project_root, "data/air_traffic.csv"))
+                df = pd.read_csv(os.path.join(project_root, "data/air_traffic_gold.csv"))
                 con.create_table("air_traffic", df, overwrite=True)
             except Exception as e:
                 st.error(f"Failed to load sample data: {e}")
@@ -202,8 +209,9 @@ def get_table_row_count(con, tbl_name):
 
 def init_agent(con, tbl_name, provider, model, memory_enabled, memory_size,
                enable_logging=False, log_level="INFO", log_file=None,
-               read_only=True, enforce_limit=True, max_result_limit=10):
-    """Initialize SQL AI Agent."""
+               read_only=True, enforce_limit=True, max_result_limit=10,
+               log_to_database=False, log_db_con=None, log_db_type=None):
+    """Initialize SQL AI Agent with optional database logging."""
     try:
         config = load_config()
 
@@ -211,6 +219,14 @@ def init_agent(con, tbl_name, provider, model, memory_enabled, memory_size,
         api_key = config.get_api_key(provider)
         base_url = config.get_base_url(provider)
         fallback_model = config.get_fallback_model(provider)
+
+        # If database logging is enabled, set log_file to None and disable console
+        # (logs will go to database instead)
+        if log_to_database and log_db_con is not None:
+            log_file = None
+            log_to_console = False  # Disable console when using database
+        else:
+            log_to_console = True
 
         agent = SqlAgent(
             api_key=api_key,
@@ -228,11 +244,86 @@ def init_agent(con, tbl_name, provider, model, memory_enabled, memory_size,
             enable_logging=enable_logging,
             log_level=log_level,
             log_file=log_file,
+            log_to_console=log_to_console,
         )
+
+        # Add database logging handler if enabled
+        if log_to_database and log_db_con is not None and enable_logging:
+            try:
+                if not agent.logger:
+                    st.error("Logger was not created. Check SqlAgent initialization.")
+                    return None
+
+                # Verify log table exists (but don't auto-initialize for PostgreSQL)
+                stats = verify_log_table(log_db_con, "sql_agent_logs", log_db_type)
+                if not stats.get('exists', False):
+                    if log_db_type == "postgres":
+                        error_msg = "❌ PostgreSQL log table 'sql_agent_logs' does not exist."
+                        if 'error' in stats:
+                            error_msg += f"\n\nVerification error: {stats['error']}"
+                        error_msg += "\n\nPlease initialize it by clicking 'Initialize Log Schema' button in the Logging Settings sidebar."
+                        st.error(error_msg)
+                        return None
+                    else:
+                        # Auto-initialize for DuckDB only
+                        st.info("📋 Log table doesn't exist. Initializing DuckDB schema...")
+                        init_duckdb_log_schema(log_db_con, "sql_agent_logs")
+                        st.success(f"✅ DuckDB log schema initialized automatically")
+                else:
+                    st.success(f"✅ Found existing log table with {stats.get('row_count', 0)} logs")
+
+                # Get the underlying Python logger
+                python_logger = agent.logger.logger
+
+                # Create database handler with custom error handling
+                db_handler = DatabaseLogHandler(
+                    con=log_db_con,
+                    table_name="sql_agent_logs",
+                    db_type=log_db_type,
+                    schema="public" if log_db_type == "postgres" else None,
+                    level=python_logger.level,
+                )
+
+                # Override handleError to show errors in Streamlit
+                original_handle_error = db_handler.handleError
+                def handle_error_with_display(record):
+                    import sys
+                    import traceback as tb
+                    ei = sys.exc_info()
+                    if ei:
+                        error_msg = f"Database logging error: {''.join(tb.format_exception(*ei))}"
+                        st.error(error_msg)
+                    original_handle_error(record)
+
+                db_handler.handleError = handle_error_with_display
+
+                # Add handler to logger
+                python_logger.addHandler(db_handler)
+
+                # Verify handler was added
+                handler_count = len(python_logger.handlers)
+                st.success(f"✅ Database logging handler added ({handler_count} handler(s) total)")
+
+                # Log successful initialization
+                agent.logger.info(
+                    "Database logging initialized",
+                    extra={
+                        'operation_type': 'initialization',
+                        'log_database_type': log_db_type,
+                        'log_table': 'sql_agent_logs',
+                    }
+                )
+
+            except Exception as e:
+                st.error(f"Failed to initialize database logging: {e}")
+                import traceback
+                st.error(traceback.format_exc())
 
         return agent
     except Exception as e:
         st.error(f"Failed to initialize agent: {e}")
+        import traceback
+        st.error(traceback.format_exc())
         return None
 
 
@@ -280,8 +371,20 @@ def display_query_result(result):
             formatted_sql = format_sql_query(result.query)
             st.code(formatted_sql, language="sql", line_numbers=True)
 
+        # Check if this is a write operation result
+        is_write_operation = (
+            result.data is not None
+            and not result.data.empty
+            and 'query_type' in result.data.columns
+            and result.data['query_type'].iloc[0] == 'write_operation'
+        )
+
         # Show result data
-        if result.data is not None and not result.data.empty:
+        if is_write_operation:
+            # Write operation - show success message
+            st.success("✅ " + result.data['message'].iloc[0])
+        elif result.data is not None and not result.data.empty:
+            # SELECT query - show data table
             st.dataframe(result.data, use_container_width=True)
         else:
             st.info("Query executed successfully but returned no data.")
@@ -376,10 +479,120 @@ with st.sidebar:
         disabled=not enable_logging,
     )
 
-    # Define log file path
-    logs_dir = os.path.join(project_root, "logs")
-    os.makedirs(logs_dir, exist_ok=True)
-    log_file = os.path.join(logs_dir, "sql_agent_streamlit.log") if enable_logging else None
+    # Logging destination
+    log_destination = st.radio(
+        "Log Destination",
+        ["File", "Database"],
+        index=0,
+        help="Choose where to store logs: file-based or database",
+        disabled=not enable_logging,
+    )
+
+    log_to_database = (log_destination == "Database" and enable_logging)
+    log_file = None
+    log_db_con = None
+    log_db_type = None
+
+    if enable_logging:
+        if log_destination == "File":
+            # Define log file path
+            logs_dir = os.path.join(project_root, "logs")
+            os.makedirs(logs_dir, exist_ok=True)
+            log_file = os.path.join(logs_dir, "sql_agent_streamlit.log")
+            st.info(f"📝 Logging to file: `{log_file}`")
+
+        else:  # Database logging
+            log_db_type_display = st.selectbox(
+                "Log Database",
+                ["PostgreSQL", "DuckDB"],
+                index=0 if db_type == "PostgreSQL" else 1,
+                help="Choose database for storing logs (can be different from data database)"
+            )
+            log_db_type = "postgres" if log_db_type_display == "PostgreSQL" else "duckdb"
+
+            # Initialize log database schema button
+            if st.button("🔧 Initialize Log Schema", help="Create log table in selected database"):
+                with st.spinner(f"Initializing {log_db_type_display} log schema..."):
+                    try:
+                        # Create connection for logging database
+                        if log_db_type == "postgres":
+                            log_db_con = ibis.postgres.connect(
+                                user="postgres",
+                                password="password",
+                                host="postgres",
+                                port=5432,
+                                database="my_db",
+                            )
+                            init_postgres_log_schema(
+                                con=log_db_con,
+                                table_name="sql_agent_logs",
+                                schema="public"
+                            )
+                            st.success(f"✅ PostgreSQL log schema initialized!")
+                            st.info("Table: public.sql_agent_logs with 6 indexes")
+                        else:
+                            # Create persistent DuckDB for logs
+                            logs_dir = os.path.join(project_root, "logs")
+                            os.makedirs(logs_dir, exist_ok=True)
+                            duckdb_log_path = os.path.join(logs_dir, "sql_agent_logs.duckdb")
+                            log_db_con = ibis.duckdb.connect(duckdb_log_path)
+                            init_duckdb_log_schema(
+                                con=log_db_con,
+                                table_name="sql_agent_logs"
+                            )
+                            st.success(f"✅ DuckDB log schema initialized!")
+                            st.info(f"Database: {duckdb_log_path}")
+
+                        # Verify table creation
+                        stats = verify_log_table(log_db_con, "sql_agent_logs", log_db_type)
+                        st.metric("Current log count", stats['row_count'])
+
+                    except Exception as e:
+                        st.error(f"Failed to initialize log schema: {e}")
+
+            # Show current log statistics
+            try:
+                # Create connection to check stats
+                if log_db_type == "postgres":
+                    temp_log_con = ibis.postgres.connect(
+                        user="postgres",
+                        password="password",
+                        host="postgres",
+                        port=5432,
+                        database="my_db",
+                    )
+                else:
+                    logs_dir = os.path.join(project_root, "logs")
+                    duckdb_log_path = os.path.join(logs_dir, "sql_agent_logs.duckdb")
+                    if os.path.exists(duckdb_log_path):
+                        temp_log_con = ibis.duckdb.connect(duckdb_log_path)
+                    else:
+                        temp_log_con = None
+
+                if temp_log_con:
+                    stats = verify_log_table(temp_log_con, "sql_agent_logs", log_db_type)
+                    if stats['exists']:
+                        st.success(f"📊 Log table exists: {stats['row_count']} logs")
+                    else:
+                        st.warning("⚠️ Log table not initialized. Click 'Initialize Log Schema' button above.")
+            except Exception:
+                st.warning("⚠️ Log table not found. Initialize schema first.")
+
+            # Show agent logger diagnostics
+            if "agent" in st.session_state and hasattr(st.session_state.agent, 'logger'):
+                with st.expander("🔍 Logger Diagnostics", expanded=False):
+                    agent = st.session_state.agent
+                    if agent.logger:
+                        python_logger = agent.logger.logger
+                        st.code(f"""
+Logger exists: True
+Logger name: {python_logger.name}
+Log level: {python_logger.level}
+Number of handlers: {len(python_logger.handlers)}
+Handler types: {[type(h).__name__ for h in python_logger.handlers]}
+                        """)
+                    else:
+                        st.warning("Agent logger is None")
 
     # Query settings
     st.subheader("Query Settings")
@@ -456,13 +669,9 @@ with st.sidebar:
     - 🔒 Configurable safety controls
     - ✅ SQL validation
     - 🔄 Auto-retry with fallback
-    - 📊 Performance logging
+    - 📊 Performance logging (file or database)
     - 🔤 Distinct value hints (optional)
     """)
-
-    # Logging info
-    if enable_logging:
-        st.info(f"📝 Logging to: `{log_file}`")
 
 
 # Main content area
@@ -478,7 +687,9 @@ if "row_count" not in st.session_state:
 
 if "agent" not in st.session_state or "last_config" not in st.session_state or \
    st.session_state.get("last_config") != (db_type, provider, model, memory_enabled, memory_size,
-                                          enable_logging, log_level, read_only, enforce_limit, max_result_limit):
+                                          enable_logging, log_level, read_only, enforce_limit, max_result_limit,
+                                          log_destination if enable_logging else None,
+                                          log_db_type if log_to_database else None):
     # Initialize or reinitialize agent when config changes
     with st.spinner("Initializing connection and agent..."):
         con, tbl_name = init_database_connection(db_type)
@@ -487,17 +698,43 @@ if "agent" not in st.session_state or "last_config" not in st.session_state or \
             # Get total row count from the table
             st.session_state.row_count = get_table_row_count(con, tbl_name)
 
+            # Create log database connection if database logging is enabled
+            if log_to_database:
+                try:
+                    if log_db_type == "postgres":
+                        log_db_con = ibis.postgres.connect(
+                            user="postgres",
+                            password="password",
+                            host="postgres",
+                            port=5432,
+                            database="my_db",
+                        )
+                    else:  # duckdb
+                        logs_dir = os.path.join(project_root, "logs")
+                        os.makedirs(logs_dir, exist_ok=True)
+                        duckdb_log_path = os.path.join(logs_dir, "sql_agent_logs.duckdb")
+                        log_db_con = ibis.duckdb.connect(duckdb_log_path)
+                except Exception as e:
+                    st.error(f"Failed to connect to log database: {e}")
+                    log_db_con = None
+
             agent = init_agent(
                 con, tbl_name, provider, model, memory_enabled, memory_size,
                 enable_logging, log_level, log_file,
-                read_only, enforce_limit, max_result_limit
+                read_only, enforce_limit, max_result_limit,
+                log_to_database, log_db_con, log_db_type
             )
 
             if agent is not None:
                 st.session_state.agent = agent
                 st.session_state.last_config = (db_type, provider, model, memory_enabled, memory_size,
-                                               enable_logging, log_level, read_only, enforce_limit, max_result_limit)
+                                               enable_logging, log_level, read_only, enforce_limit, max_result_limit,
+                                               log_destination if enable_logging else None,
+                                               log_db_type if log_to_database else None)
                 st.session_state.log_file = log_file
+                st.session_state.log_to_database = log_to_database
+                st.session_state.log_db_con = log_db_con if log_to_database else None
+                st.session_state.log_db_type = log_db_type if log_to_database else None
 
                 # Check if this is the first initialization
                 if "first_init_done" not in st.session_state:
@@ -531,47 +768,160 @@ for message in st.session_state.messages:
             display_query_result(message["result"])
 
 # Log viewer (if logging is enabled)
-if enable_logging and log_file and os.path.exists(log_file):
+if enable_logging:
     with st.expander("📊 View Agent Logs", expanded=False):
-        col1, col2 = st.columns([3, 1])
+        if log_destination == "File" and log_file and os.path.exists(log_file):
+            # File-based log viewer
+            col1, col2 = st.columns([3, 1])
 
-        with col1:
-            max_log_lines = st.slider(
-                "Number of log entries to display",
-                min_value=10,
-                max_value=200,
-                value=50,
-                step=10
-            )
+            with col1:
+                max_log_lines = st.slider(
+                    "Number of log entries to display",
+                    min_value=10,
+                    max_value=200,
+                    value=50,
+                    step=10
+                )
 
-        with col2:
-            show_full_logs = st.checkbox("Show full details", value=False)
-            if st.button("🔄 Refresh Logs"):
-                st.rerun()
+            with col2:
+                show_full_logs = st.checkbox("Show full details", value=False)
+                if st.button("🔄 Refresh Logs"):
+                    st.rerun()
 
-        # Read and display logs
-        log_entries = read_log_file(log_file, max_lines=max_log_lines)
+            # Read and display logs
+            log_entries = read_log_file(log_file, max_lines=max_log_lines)
 
-        if log_entries:
-            st.markdown(f"**Showing {len(log_entries)} most recent log entries:**")
+            if log_entries:
+                st.markdown(f"**Showing {len(log_entries)} most recent log entries:**")
 
-            # Display logs
-            for entry in log_entries:
-                st.markdown(format_log_entry(entry, show_full=show_full_logs), unsafe_allow_html=True)
+                # Display logs
+                for entry in log_entries:
+                    st.markdown(format_log_entry(entry, show_full=show_full_logs), unsafe_allow_html=True)
+            else:
+                st.info("No log entries yet. Start asking questions to see logs appear here.")
+
+            # Download logs button
+            if log_entries:
+                st.divider()
+                log_content = "\n".join([json.dumps(entry) if isinstance(entry, dict) else str(entry)
+                                        for entry in log_entries])
+                st.download_button(
+                    label="📥 Download Logs",
+                    data=log_content,
+                    file_name=f"sql_agent_logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    mime="application/json"
+                )
+
+        elif log_destination == "Database" and st.session_state.get('log_db_con'):
+            # Database-based log viewer
+            col1, col2 = st.columns([3, 1])
+
+            with col1:
+                max_log_entries = st.slider(
+                    "Number of log entries to display",
+                    min_value=10,
+                    max_value=200,
+                    value=50,
+                    step=10
+                )
+
+            with col2:
+                if st.button("🔄 Refresh Logs"):
+                    st.rerun()
+
+            # Query logs from database
+            try:
+                log_db_con = st.session_state.log_db_con
+                log_db_type = st.session_state.log_db_type
+
+                # First, check total count
+                count_query = "SELECT COUNT(*) as count FROM sql_agent_logs;"
+
+                if log_db_type == "postgres":
+                    count_result = log_db_con.sql(count_query).to_pandas()
+                else:
+                    count_result = log_db_con.con.execute(count_query).df()
+
+                total_count = count_result.iloc[0, 0]
+                st.info(f"🔍 Total logs in database: {total_count}")
+
+                # Query recent logs
+                query = f"""
+                SELECT
+                    timestamp,
+                    level,
+                    logger,
+                    message,
+                    session_id,
+                    operation_type
+                FROM sql_agent_logs
+                ORDER BY timestamp DESC
+                LIMIT {max_log_entries};
+                """
+
+                if log_db_type == "postgres":
+                    # Use ibis sql() method which returns a table expression
+                    logs_df = log_db_con.sql(query).to_pandas()
+                else:  # duckdb
+                    logs_df = log_db_con.con.execute(query).df()
+
+                if not logs_df.empty:
+                    st.markdown(f"**Showing {len(logs_df)} most recent log entries:**")
+
+                    # Format and display logs
+                    for _, row in logs_df.iterrows():
+                        level = row['level']
+                        message = row['message']
+                        timestamp = row['timestamp']
+                        operation_type = row.get('operation_type', '')
+
+                        level_class = f"log-{level.lower()}"
+                        formatted = f'<div class="log-entry {level_class}">'
+                        formatted += f'<strong>[{level}]</strong> {timestamp} | {message}'
+                        if operation_type:
+                            formatted += f' <small>({operation_type})</small>'
+                        formatted += '</div>'
+                        st.markdown(formatted, unsafe_allow_html=True)
+
+                    # Download logs button
+                    st.divider()
+                    csv_data = logs_df.to_csv(index=False)
+                    st.download_button(
+                        label="📥 Download Logs (CSV)",
+                        data=csv_data,
+                        file_name=f"sql_agent_logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                        mime="text/csv"
+                    )
+
+                    # Show log statistics
+                    st.divider()
+                    st.subheader("Log Statistics")
+                    col1, col2, col3 = st.columns(3)
+
+                    with col1:
+                        st.metric("Total Logs", len(logs_df))
+
+                    with col2:
+                        # Count by level
+                        level_counts = logs_df['level'].value_counts()
+                        error_count = level_counts.get('ERROR', 0)
+                        st.metric("Errors", error_count)
+
+                    with col3:
+                        # Count by operation type
+                        if 'operation_type' in logs_df.columns:
+                            op_counts = logs_df['operation_type'].value_counts()
+                            st.metric("Operations", len(op_counts))
+
+                else:
+                    st.info("No log entries yet. Start asking questions to see logs appear here.")
+
+            except Exception as e:
+                st.error(f"Failed to read logs from database: {e}")
+                st.info("Make sure the log schema is initialized.")
+
         else:
-            st.info("No log entries yet. Start asking questions to see logs appear here.")
-
-        # Download logs button
-        if log_entries:
-            st.divider()
-            log_content = "\n".join([json.dumps(entry) if isinstance(entry, dict) else str(entry)
-                                    for entry in log_entries])
-            st.download_button(
-                label="📥 Download Logs",
-                data=log_content,
-                file_name=f"sql_agent_logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-                mime="application/json"
-            )
+            st.info("No logs available. Check your logging configuration.")
 
 
 # Chat input
@@ -594,7 +944,18 @@ if prompt := st.chat_input("Ask a question about your data..."):
                 )
 
                 if result.success:
-                    response = "I've executed your query. Here are the results:"
+                    # Check if this is a write operation
+                    is_write_operation = (
+                        result.data is not None
+                        and not result.data.empty
+                        and 'query_type' in result.data.columns
+                        and result.data['query_type'].iloc[0] == 'write_operation'
+                    )
+
+                    if is_write_operation:
+                        response = "I've executed your write operation successfully:"
+                    else:
+                        response = "I've executed your query. Here are the results:"
                 else:
                     response = "I encountered an issue with your query:"
 
