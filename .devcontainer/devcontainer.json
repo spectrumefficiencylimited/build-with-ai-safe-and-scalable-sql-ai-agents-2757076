@@ -20,7 +20,7 @@
         //Python
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "charliermarsh.ruff",
+        // "charliermarsh.ruff",
         // HTML
         "ms-vscode.live-server",
         // Documents/Settings
