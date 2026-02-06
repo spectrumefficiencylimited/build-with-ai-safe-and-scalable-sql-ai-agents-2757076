@@ -898,29 +898,33 @@ def main():
             # Display extra_fields in formatted JSON
             st.markdown("**Extra Fields:**")
 
-            # Collect extra fields
-            extra_fields_data = {}
+            # Get extra_fields from the original filtered_df (not filtered_df_display)
+            # because we need access to all columns
+            original_row = filtered_df.iloc[selected_idx]
 
-            # Get all fields that might be in extra_fields
-            extra_field_keys = [
-                'prompt_tokens', 'completion_tokens', 'total_tokens',
-                'duration_ms', 'model_name', 'success', 'session_id',
-                'error', 'validation_message', 'query', 'result_rows'
-            ]
+            extra_fields_data = None
 
-            for key in extra_field_keys:
-                if key in selected_row.index and pd.notna(selected_row[key]):
-                    value = selected_row[key]
-                    # Convert numpy types to Python types for JSON serialization
-                    if hasattr(value, 'item'):
-                        value = value.item()
-                    extra_fields_data[key] = value
+            # Check if extra_fields column exists
+            if 'extra_fields' in original_row.index and pd.notna(original_row['extra_fields']):
+                extra_fields_value = original_row['extra_fields']
+
+                # Parse if it's a JSON string
+                if isinstance(extra_fields_value, str):
+                    try:
+                        extra_fields_data = json.loads(extra_fields_value)
+                    except json.JSONDecodeError:
+                        st.warning("Could not parse extra_fields as JSON")
+                        st.code(extra_fields_value)
+                # If it's already a dict
+                elif isinstance(extra_fields_value, dict):
+                    extra_fields_data = extra_fields_value
 
             # Display as formatted JSON
             if extra_fields_data:
                 st.json(extra_fields_data, expanded=True)
             else:
-                st.info("No extra fields available for this log entry")
+                st.info("No extra_fields available for this log entry")
+
 
 
         # Download button
