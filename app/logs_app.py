@@ -848,6 +848,9 @@ def main():
             (logs_df['operation_type'].isin(operation_filter))
         ].head(max_rows)
 
+        # Reset index for selection
+        filtered_df_display = filtered_df.reset_index(drop=True)
+
         # Display table
         display_columns = [
             'timestamp', 'level', 'operation_type', 'message',
@@ -855,13 +858,70 @@ def main():
         ]
 
         # Only show columns that exist
-        display_columns = [col for col in display_columns if col in filtered_df.columns]
+        display_columns = [col for col in display_columns if col in filtered_df_display.columns]
 
-        st.dataframe(
-            filtered_df[display_columns],
+        # Interactive table with row selection
+        st.markdown("**Click on a row to view detailed extra_fields information**")
+
+        event = st.dataframe(
+            filtered_df_display[display_columns],
             use_container_width=True,
-            height=400
+            height=400,
+            on_select="rerun",
+            selection_mode="single-row",
+            key="logs_table"
         )
+
+        # Display extra_fields for selected row
+        if event.selection.rows:
+            selected_idx = event.selection.rows[0]
+            selected_row = filtered_df_display.iloc[selected_idx]
+
+            st.divider()
+            st.subheader("📝 Detailed Log Information")
+
+            # Display basic info
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Timestamp", str(selected_row['timestamp'])[:19])
+            with col2:
+                st.metric("Level", selected_row['level'])
+            with col3:
+                st.metric("Operation", selected_row.get('operation_type', 'N/A'))
+            with col4:
+                st.metric("Success", str(selected_row.get('success', 'N/A')))
+
+            # Display message
+            st.markdown("**Message:**")
+            st.info(selected_row.get('message', 'No message'))
+
+            # Display extra_fields in formatted JSON
+            st.markdown("**Extra Fields:**")
+
+            # Collect extra fields
+            extra_fields_data = {}
+
+            # Get all fields that might be in extra_fields
+            extra_field_keys = [
+                'prompt_tokens', 'completion_tokens', 'total_tokens',
+                'duration_ms', 'model_name', 'success', 'session_id',
+                'error', 'validation_message', 'query', 'result_rows'
+            ]
+
+            for key in extra_field_keys:
+                if key in selected_row.index and pd.notna(selected_row[key]):
+                    value = selected_row[key]
+                    # Convert numpy types to Python types for JSON serialization
+                    if hasattr(value, 'item'):
+                        value = value.item()
+                    extra_fields_data[key] = value
+
+            # Display as formatted JSON
+            if extra_fields_data:
+                st.json(extra_fields_data, expanded=True)
+            else:
+                st.info("No extra fields available for this log entry")
+
 
         # Download button
         st.divider()

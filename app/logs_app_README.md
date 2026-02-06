@@ -27,6 +27,8 @@ A dedicated Streamlit application for monitoring and analyzing SQL AI Agent perf
 - **Auto-Refresh**: Optional automatic data refresh (10-300 seconds)
 - **Manual Refresh**: On-demand data reload
 - **Interactive Filters**: Filter logs by level, operation type
+- **Interactive Log Table**: Click on any log row to view detailed extra_fields in formatted JSON
+- **AI Chat Assistant**: Natural language queries on logs data with conversation memory
 - **CSV Export**: Download complete logs for offline analysis
 
 ## Usage
@@ -108,6 +110,33 @@ The dashboard will open in your browser at `http://localhost:8501`
 - **Level**: DEBUG, INFO, WARNING, ERROR
 - **Operation Type**: query_result, llm_invocation, etc.
 - **Max Rows**: Limit displayed logs (10-500)
+
+#### Interactive Log Details
+- **Click to Inspect**: Click on any row in the detailed logs table to view full details
+- **Formatted JSON**: Extra fields are displayed in a clean, expandable JSON format
+- **Key Metrics Display**: See timestamp, level, operation type, and success status at a glance
+- **Full Message**: View the complete log message
+- **All Extra Fields**: Includes prompt_tokens, completion_tokens, duration_ms, model_name, session_id, and more
+
+**How to Use:**
+1. Filter logs using the controls above the table
+2. Click on any row in the logs table
+3. Detailed information appears below the table including:
+   - Quick metrics (timestamp, level, operation, success)
+   - Full log message
+   - All extra_fields in formatted JSON
+
+#### AI Chat Assistant
+- **Natural Language Queries**: Ask questions about your logs in plain English
+- **Conversation Memory**: Agent remembers context from previous questions
+- **Safe Read-Only**: All queries are validated and limited to SELECT operations
+- **Result Limits**: Maximum 1000 rows returned per query
+
+**Example Questions:**
+- "Show me all ERROR level logs from the last hour"
+- "What are the top 5 models by token usage?"
+- "How many successful queries were there today?"
+- "Show queries that took longer than 5 seconds"
 
 ## Metrics Explained
 
