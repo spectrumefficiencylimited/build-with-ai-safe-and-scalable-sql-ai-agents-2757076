@@ -5,6 +5,8 @@ This is the repository for the LinkedIn Learning course `Build with AI: Safe and
 
 ## Course Description
 
+<p>Make SQL agents product-ready by learning how to leverage Python, LangChain, and LLM frameworks. First, learn about the overall architecture of SQL AI agents by focusing on building a robust framework that uses deterministic information. Find out how to create effective prompt templates, add context, and inject memory into agents to handle complex and dynamic queries with ease. Dive into safety assurance, query validations, and safety constraints. Review monitoring systems and error-handling process. Then, set up logs to track the agent performance with MLflow. Last but not least, see how to implement multiple AI agents to process the data. </p><p>This course is designed for data scientists and engineers but is also beneficial to data analysts seeking to increase knowledge and build operational skills in AI systems. By the end of the course, you will have learned how to prototype SQL AI agents and deploy them responsibly into production environments. </p>
+
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
@@ -24,18 +26,12 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
 
 ## Instructor
 
-Instructor name
+Rami Krispin
 
-Instructor description
-
+Senior Manager, Data Science and Engineering
                             
 
 Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/).
@@ -43,5 +39,5 @@ Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learn
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
+[lil-course-url]: https://www.linkedin.com/learning/build-with-ai-sql-ai-agents-in-production
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D560DAQEGUp_kqxS8qw/learning-public-crop_675_1200/B56ZxOVEW9IQAY-/0/1770840672587?e=2147483647&v=beta&t=LMvCyFpIJRhmDCJ4HGZ8RSAthm2SHdx0sWoCAFTB6-w
