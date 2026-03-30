@@ -1,11 +1,147 @@
-Copyright 2025 LinkedIn Corporation
+Copyright 2026 LinkedIn Corporation
 All Rights Reserved.
 
 Licensed under the LinkedIn Learning Exercise File License (the "License").
 See LICENSE in the project root for license information.
 
 ATTRIBUTIONS:
-[PLEASE PROVIDE ATTRIBUTIONS OR DELETE THIS AND THE ABOVE LINE “ATTRIBUTIONS”]
+
+***
+
+ipywidgets  
+<https://github.com/jupyter-widgets/ipywidgets>  
+License: BSD-3-Clause  
+<https://opensource.org/licenses/BSD-3-Clause>
+----------------------------------------------
+
+***
+
+langchain  
+<https://github.com/langchain-ai/langchain>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+langchain-core  
+<https://github.com/langchain-ai/langchain>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+langchain-community  
+<https://github.com/langchain-ai/langchain>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+langchain-openai  
+<https://github.com/langchain-ai/langchain>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+openai  
+<https://github.com/openai/openai-python>  
+License: Apache-2.0  
+<http://www.apache.org/licenses/>
+---------------------------------
+
+***
+
+psycopg  
+<https://github.com/psycopg/psycopg>  
+License: LGPL-3.0-only  
+<https://www.gnu.org/licenses/lgpl-3.0.html>
+--------------------------------------------
+
+***
+
+pyyaml  
+<https://github.com/yaml/pyyaml>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+numpy  
+<https://github.com/numpy/numpy>  
+License: Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib  
+<https://numpy.org/doc/stable/license.html>
+-------------------------------------------
+
+***
+
+pandas  
+<https://github.com/pandas-dev/pandas>  
+License: BSD-2-Clause AND BSD-3-Clause  
+<https://opensource.org/licenses/BSD-3-Clause>
+----------------------------------------------
+
+***
+
+duckdb  
+<https://github.com/duckdb/duckdb>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+sqlglot  
+<https://github.com/tobymao/sqlglot>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+jupyter  
+<https://github.com/jupyter/jupyter>  
+License: BSD-2-Clause AND BSD-3-Clause  
+<https://opensource.org/licenses/BSD-3-Clause>
+----------------------------------------------
+
+***
+
+plotly  
+<https://github.com/plotly/plotly.py>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+plotly-express  
+<https://github.com/plotly/plotly.py>  
+License: MIT  
+<https://opensource.org/licenses/MIT>
+-------------------------------------
+
+***
+
+streamlit  
+<https://github.com/streamlit/streamlit>  
+License: Apache-2.0  
+<http://www.apache.org/licenses/>
+---------------------------------
+
+***
+
+ibis-framework  
+<https://github.com/ibis-project/ibis>  
+License: Apache-2.0  
+<http://www.apache.org/licenses/>
+---------------------------------
+
 
 Please note, this project may automatically load third party code from external 
 repositories (for example, NPM modules, Composer packages, or other dependencies). 
